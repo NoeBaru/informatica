@@ -1,0 +1,15 @@
+Astolfi 27
+Bianchi 3
+Carli 15
+Conti 3
+Diaz 2
+Ferro 22
+Finotti 21
+Marangoni 13
+Montale 28
+Nardo 1
+Natale 30
+Pasquali 3
+Ranieri 10
+Salvi 20
+Tommasi 27
