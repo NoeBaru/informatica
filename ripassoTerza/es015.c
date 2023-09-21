@@ -45,7 +45,7 @@ void bubbleSort3(float vett[], int dim) {
     while (sup > 0) {
         sca = 0;
         for (k = 0; k < sup ; k++) {
-            if (vett[k] > vett[k + 1]){
+            if (vett[k] < vett[k + 1]){
                 scambio(&vett[k], &vett[k + 1]);
                 sca = k ;
             }
@@ -69,10 +69,10 @@ void minMax(float vett[], int dim) {
 
     bubbleSort3(vett, dim);
 
-    if(vett[0] == min){
+    if(vett[dim - 1] == min){
         printf("\nIl minimo corrisponde (%.2f)", min);
     }
-    if(vett[dim - 1] == max){
+    if(vett[0] == max){
         printf("\nIl massimo corrisponde (%.2f)", max);
     }
 }
