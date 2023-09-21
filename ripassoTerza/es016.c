@@ -27,7 +27,7 @@ int chiediDim(int min, int max){
 	return n;
 }
 
-void caricaStr(char str[], int dim) {
+void randomStr(char str[], int dim) {
     for(int k = 0; k < dim; k++) {
         str[k] = LIM_MIN + rand() % (LIM_MAX + 1 - LIM_MIN);
     }
@@ -48,7 +48,7 @@ int main() {
 
     srand(time(NULL));
 
-    caricaStr(str, n);
+    randomStr(str, n);
 
     stampaStr(str, n);
 
