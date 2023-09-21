@@ -13,7 +13,7 @@ text: Cancellare le vocali presenti in una stringa (ciao -> c), usare la funzion
 */
 
 bool isVocale(char c){
-    bool tro=false;
+    bool tro = false;
     if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'){
         tro = true;
     }
