@@ -4,9 +4,8 @@
 #include <stdbool.h>
 
 #define STRL 26
-#define NR 100
-#define NC 100
-#define MAX 10
+#define NR 10
+#define NC 10
 
 //matEs24.txt
 
@@ -18,84 +17,58 @@ text: Data una matrice NRxNC caricata da file, creare il vettore riga di lunghez
 somma delle colonne della matrice
 */
 
-float chiediDim(char mess[], int min, int max){
-	float n;
-	printf(mess);
-	do{
-		scanf("%f", &n);
-		if(n <= min || n > max){
-			printf(mess);
-		}
-	} while(n < min || n > max);
-	return n;
-}
+int matriceFile(int matrice[][NC], int nRighe, int nColonne) {
+    int r = 0, c;
 
-void caricaMatDaFile(float mat[][NC], int nr, int nc, char nomeFile[]) {
     FILE *fp;
-
-    fp = fopen(nomeFile, "r");
-
-    if(fp != NULL){
-        for(int k = 0; k < nr; k++) {
-        //while(fscanf(fp, "%f", &mat[k][j]) != EOF && k < nr){
-            for(int j = 0; j < nc; j++) {
-                fscanf(fp, "%f", &mat[k][j]);
-            }
+    fp = fopen("numeriMatrice.txt", "r");
+    if (fp == NULL) {
+        printf("Errore nell'apertura del file.\n");
+    } else {
+        r =0;
+        while (r < nRighe && fscanf(fp, "%d", &matrice[r][0]) != EOF) {
+            for (int c = 1; c < nColonne; c++)
+                fscanf(fp, "%d", &matrice[r][c]);
+            r++;
         }
         fclose(fp);
-    } else {
-        printf("Il file della matrice non esiste o e' vuoto!\n");
+    }
+    return r;
+}
+
+void stampaMatrice(int matrice[][NC], int nr, int nc) {
+    for (int x = 0; x < nr; x++) {
+        for (int y = 0; y < nc; y++) {
+            printf("%3d  ", matrice[x][y]);
+        }
+        printf("\n");
     }
 }
 
-void sommaColonneMat(float mat[][NC], float sommaC[], int nr, int nc) {
-
-    for(int k = 0; k < nc; k++){ //colonne
-        for(int j = 0; j < nr; j++){ //righe
-            sommaC[k] += mat[j][k];
+void sommaColonne(int matrice[][NC], int vettore[], int nRighe, int nColonne) {
+    for (int c = 0; c < nColonne; c++) {
+        vettore[c] = 0;
+        for (int r = 0; r < nRighe; r++) {
+            vettore[c] += matrice[r][c];
         }
-        printf("\n");
-    }        
+    }
 }
 
-void stampaVett(float vett[], int dim) {
-    for (int k = 0; k < dim; k++) {
-        printf("[%d]:%.2f ", k, vett[k]);
-        printf("\n");
+void stampaVett(int vet[], int lim) {
+    for (int c = 0; c < lim; c++) {
+        printf("%d  ", vet[c]);
     }
     printf("\n");
 }
 
-void stampaMat(float mat[][NC], int nr, int nc){
-    
-    for(int k = 0; k < nr; k++){
-        for(int j = 0; j < nc; j++){
-            printf("%.2f ", mat[k][j]);
-        }
-        printf("\n");
-    }
-}
-
-int main() {
-    float mat[NR][NC];
-    float sommaC[NC] = {0};
-    int nr, nc;
-    char nomeFile[STRL];
-
-    nr = chiediDim("Inserisci il numero di righe :", 0, NR);
-    nc = chiediDim("Inserisci il numero di colonne :", 0, NC);
-    printf("Inserisci il nome del file: ");
-    scanf("%s", nomeFile);
-
-    caricaMatDaFile(mat, nr, nc, nomeFile);
-
-    sommaColonneMat(mat, sommaC, nr, nc);
-
-    printf("la somma delle colonne e':\n");
-    stampaVett(sommaC, nc);
-
-    printf("La matrice e':\n");
-    stampaMat(mat, nr, nc);
+int main () {
+    int matrice[NR][NC];
+    int riga[NC];
+    int nRighe =  matriceFile(matrice, NR, NC);
+    stampaMatrice(matrice, nRighe, NC);
+    sommaColonne(matrice, riga, nRighe, NC);
+    printf("La somma delle colonne e': \n");
+    stampaVett(riga, NC);
 
     return 0;
 }
