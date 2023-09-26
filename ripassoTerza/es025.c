@@ -37,25 +37,24 @@ int caricaMatDaFile(int matrice[][N], char nomeFile[], int nRighe, int nColonne)
     return r;
 }
 
-int IsSpeculare(int v[], int dim) {
-	int k = 0;
-    int nSpec = 0;
+bool isSpeculare(int mat[][N], int nr, int nc) {
+	int r = 0, c = 0;
 	bool spec = true;
 
-	while(k < dim/2 && spec == true){
-		if(v[k] != v[dim - 1 - k]) {
-			spec = false;
-		}
-
-        if(spec == true){
-            nSpec++;
+	while(r < nr / 2 && spec == true ){
+        c = 0;
+        while(c < nc / 2 && spec == true){
+		    if(mat[r][c] != mat[r][nc - 1 - c]) {
+		    	spec = false;
+		    }
+		    c++;
         }
-		k++;
+        r++;
 	}
-	return nSpec;
+	return spec;
 }
 
-int matSpec(int mat[][N], int numR) {
+int matSimmetria(int mat[][N], int numR) {
     int numSpec = 0;
     for(int k = 0; k < numR; k++){
         numSpec += IsSpeculare(mat[k], numR);

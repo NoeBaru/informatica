@@ -5,7 +5,7 @@
 
 #define STRL 26
 #define M 100
-#define N 4
+#define N 7
 
 /*
 Author: Noemi Baruffolo
@@ -36,28 +36,21 @@ int caricaMatDaFile(int matrice[][N], char nomeFile[], int nRighe, int nColonne)
     return r;
 }
 
-bool isSpeculare(int v[], int dim) {
-	int k = 0;
+bool isSpeculare(int mat[][N], int nr, int nc) {
+	int r = 0, c = 0;
 	bool spec = true;
 
-	while(k < dim/2 && spec == true ){
-		if(v[k] != v[dim - 1 - k]) {
-			spec = false;
-		}
-		k++;
+	while(r < nr / 2 && spec == true ){
+        c = 0;
+        while(c < nc / 2 && spec == true){
+		    if(mat[r][c] != mat[r][nc - 1 - c]) {
+		    	spec = false;
+		    }
+		    c++;
+        }
+        r++;
 	}
 	return spec;
-}
-
-bool matSpec(int mat[][N], int numR) {
-    int k = 0;
-    bool spec = false;
-
-    while(k < numR && (IsSpeculare(mat[k], numR) == true)){
-        spec = true;
-        k++;
-    }
-    return spec;
 }
 
 void stampaMatrice(int matrice[][N], int nr, int nc) {
@@ -80,10 +73,10 @@ int main() {
 
     nr = caricaMatDaFile(MAT, nomeFile, M, N);
     
-    if(matSpec(MAT, nr) == true){
-        printf("La matrice e' speculare!");
+    if(isSpeculare(MAT, nr, N) == true){
+        printf("La matrice e' speculare!\n");
     } else{
-        printf("La matrice NON e' speculare!");
+        printf("La matrice NON e' speculare!\n");
     }
 
     stampaMatrice(MAT, nr, N);

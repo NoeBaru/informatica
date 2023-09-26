@@ -1,0 +1,6 @@
+juventus 10 12
+milan 7 6
+inter 13 11
+palermo 9 10
+lazio 8 4
+udinese 5 7

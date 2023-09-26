@@ -394,6 +394,36 @@ void minMax(float vett[], int dim) {
     }
 }
 
+//calcola il massimo
+float calcolaMax(float vett[], int dim){
+    float max = vett[0];
+
+    for (int k = 0; k < dim; k++){
+        if(vett[k] > max){
+            max = vett[k];
+        }
+    }
+    return max;
+}
+
+//calcola il minimo
+float calcolaMin(float vett[], int dim){
+    float min = vett[0];
+
+    for (int k = 0; k < dim; k++){
+        if(vett[k] < min){
+            min = vett[k];
+        }
+    }
+    return min;
+}
+
+//calcola la media
+float calcolaMedia(float vett[], int dim) {
+
+}
+
+
 //genera una stringa con caratteri casuali
 void randomStr(char str[], int dim) {
     for(int k = 0; k < dim; k++) {
