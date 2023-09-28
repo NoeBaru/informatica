@@ -3,9 +3,10 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define STRL 21
+#define STRL 20
 #define DIM 100
-#define AZIONI 7
+#define FILE_PROD_DA_CANCELLARE "SCADUTI.DAT"
+#define NOME_FILE "NEGOZIO.DAT"
 
 /*
 Author: Noemi Baruffolo
@@ -40,4 +41,108 @@ aceto 49 2022/4/30
 {"tonno",48, 2027,10,4}
 */
 
-//.txt
+typedef struct{
+    int anno;
+    int mese;
+    int giorno;
+} Data;
+
+typedef struct{
+    char descrizione[STRL];
+    int quant;
+    Data sadenza;
+} Alimento;
+
+int caricaDati(Alimento archivio[], int dim, char nomeFile[]){
+    int k = 0;
+    FILE *fp;
+
+    fp = fopen(nomeFile, "r");
+
+    if(fp != NULL){
+        while(k < dim && fscanf(fp, "%s", archivio[k].descrizione) != EOF){
+            fscanf(fp, "%d", &archivio[k].quant);
+            fscanf(fp, "%d", &archivio[k].sadenza.anno);
+            fscanf(fp, "%d", &archivio[k].sadenza.mese);
+            fscanf(fp, "%d", &archivio[k].sadenza.giorno);
+            k++;
+        }
+    } else {
+        printf("Il file del concorso non esiste o e' vuoto!\n");
+    }
+
+    return k;
+}
+
+void scambio(Alimento *a, Alimento *b){
+    Alimento temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void ordinaProdotti(Alimento archivio[], int dim){
+    int k, sup, sca, risult;
+    sup = dim - 1 ;
+    while ( sup > 0 ) {
+        sca=  0;
+        for (k = 0; k < sup; k++) {
+            risult = strcmp(archivio[k].descrizione, archivio[k + 1].descrizione);
+            if (risult > 0){
+                scambio(&archivio[k], &archivio[k + 1]);
+                sca = k;
+            }
+            //per verificare che abbiaordinato e funzioni
+            printf("%s ", archivio[k].descrizione);
+            printf("%d ", &archivio[k].quant);
+            printf("%d/", &archivio[k].sadenza.anno);
+            printf("/%d", &archivio[k].sadenza.mese);
+            printf("%d\n", &archivio[k].sadenza.giorno);
+        }
+    sup = sca;
+    }
+}
+
+void convertiData(Data data) {
+    
+}
+
+int prodottiScaduti(Alimento archivio[], int dim, char nomeFile[], Data dataOggi){
+    int cont = 0;
+
+    FILE *fp;
+
+    fp = fopen(nomeFile, "w");
+
+    if(fp != NULL){
+        for(int k = 0; k < dim; k++){
+            if(convertiData(dataOggi) >= convertiData(dataOggi)){
+                fprintf(fp, "%s ", archivio[k].descrizione);
+                fprintf(fp, "%d ", &archivio[k].quant);
+                fprintf(fp, "%d/", &archivio[k].sadenza.anno);
+                fprintf(fp, "/%d", &archivio[k].sadenza.mese);
+                fprintf(fp, "%d\n", &archivio[k].sadenza.giorno);
+                cont++;
+            }
+        }
+    } else {
+        printf("Il file del concorso non esiste o e' vuoto!\n");
+    }
+    return cont;
+}
+
+
+int main() {
+    Alimento archivio[DIM];
+    Data dataOggi;
+    int annoAttuale, meseAttuale, giornoAttuale;
+
+    int dim = caricaDati(archivio, DIM, NOME_FILE); //numero di prodotti e caricamento dei dati da file
+
+    printf("Inserisci la data attuale: %d/%d/%d", &dataOggi.anno, &dataOggi.mese, &dataOggi.giorno);
+
+    ordinaProdotti(archivio, dim);
+
+    prodottiScaduti(archivio, dim, FILE_PROD_DA_CANCELLARE, annoAttuale, meseAttuale, giornoAttuale);
+
+    return 0;
+}

@@ -3,9 +3,9 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define P 10 //numero di punteggi e prove
+#define NP 10 //numero di punteggi e prove
 #define DIM 100 //dimensione massima
-#define STRL 20 //lunhezza stringhe
+#define STRL 20 //lunghezza stringhe
 
 /*
 Author: Noemi Baruffolo
@@ -33,7 +33,7 @@ Esempio di contenuto dell'array di struct:
 
 typedef struct {
     char nome[STRL];
-    int punt[P];
+    int punt[NP];
     int tot;
 } Concorso;
 
@@ -47,8 +47,8 @@ int caricaDati(Concorso conc[], int dim, int p, char nomeFile[]){
         while(fscanf(fp, "%s", conc[k].nome) != EOF && k < dim){
             for(int j = 0; j < p; j++) {
                 fscanf(fp, "%d", &conc[k].punt[j]);
+                conc[k].tot += conc[k].punt[j];
             }
-            fscanf(fp, "%d", &conc[k].tot);
             k++;
         }
     } else {
@@ -119,9 +119,9 @@ int main() {
     fflush(stdin);
     scanf("%s", nomeFile);
 
-    int num = caricaDati(concorrenti, DIM, P, nomeFile); //numero di partecipanti e caricamento dei dati da file
+    int num = caricaDati(concorrenti, DIM, NP, nomeFile); //numero di partecipanti e caricamento dei dati da file
 
-    winner(concorrenti, num, P); //vincitore per ogni prova
+    winner(concorrenti, num, NP); //vincitore per ogni prova
 
     stampaClassifica(concorrenti, num); //stampa classifica
 
