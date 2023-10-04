@@ -653,16 +653,15 @@ da testare v[0 5 7 3 5]
 //3)
 //NON ordinati NON disgiunti
 //vettore non ordinato a elementi non disgiunti restituisce le occorrenze
-int NonOrdNonDisg(int v[],int n, int x) {
-    int nx, k;
-    nx = 0;
-    for (k = 0; k < n; k++){
-        if(x == v[k]){
+int nonOrdNonDisg(int vett[],int dim, int x) {
+    int pos = 0;
+    for (int k = 0; k < dim; k++){
+        if(x == vett[k]){
             printf("\nL'elemento trovato in posizione %d", k);
-            nx++;
+            pos++;
         }
     }
-return nx; //numero di occorrenze
+return pos; //numero di occorrenze
 }
 /*
 CONFRONTI n (c’è il for)

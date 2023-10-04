@@ -17,6 +17,29 @@
 
 #define FACCE_DADO 6
 
+/*
+Author: Noemi Baruffolo
+date: 28/09/2023
+es. 32
+text:
+Gioco carte Mostri caratterizzati da un nome, forza [5..10], vita [0..100]. Gestire il gioco con un 
+menu:
+● 0-esci
+● 1- crea mostro
+● 2- gioca (scegli mostro)
+● 3- stampa mazzo
+Si devono usare anche le seguenti funzioni:
+● void setVita( Mostro *m, int vita); controlla correttezza vita
+● void setForza( Mostro *m, int forza); controlla correttezza forza
+● int getForza(Mostro m)
+● int getVita(Mostro m)
+● int getLancio(Mostro m) si lancia un dado con 6 facce e si moltiplica per la forza del mostro
+● Mostro creaMostro(char nome[], int vita, int forza)
+● Mostro creaMostroCasuale(char nome[])
+*/
+
+//set vs get, il set imposta mentre il get restituisce
+
 typedef struct {
     char nome[STRL];
     int forza;
@@ -25,7 +48,7 @@ typedef struct {
 } Mostro;
 
 void menu() {
-    printf("Inserisci il numero corrispondente alla scelta:\n0 = esci\n1: crea mostro\n2: gioca (sceglie il mostro)\n3: stampa mazzo\nN^: ");
+    printf("\nInserisci il numero corrispondente alla scelta:\n0 = esci\n1: crea mostro\n2: gioca (sceglie il mostro)\n3: stampa mazzo\nN^: ");
 }
 
 Mostro creaMostro(char nome[], int vita, int forza) {
@@ -39,19 +62,10 @@ Mostro creaMostro(char nome[], int vita, int forza) {
 }
 
 Mostro creaMostroCasuale(char nome[]) {
-    return creaMostro(
-        nome,
-        rand() % (MAX_VITA - MIN_VITA_GEN + 1) + MIN_VITA_GEN,
-        rand() % (MAX_FORZA - MIN_FORZA + 1) + MIN_FORZA
-    );
+    return creaMostro(nome, rand() % (MAX_VITA - MIN_VITA_GEN + 1) + MIN_VITA_GEN, rand() % (MAX_FORZA - MIN_FORZA + 1) + MIN_FORZA);
 }
 
 void setVita(Mostro *m, int vita) {
-    /*
-    vita = chiediProprieta(MIN_VITA, MAX_VITA, "Inserisci la vita: ");
-    m->vita = vita;
-    */
-
     if(vita >= MIN_VITA && vita <= MAX_VITA) {
         m->vita = vita;
     }
@@ -66,19 +80,25 @@ void setVita(Mostro *m, int vita) {
 }
 
 void setForza(Mostro *m, int forza) {
-    /*
-    forza =  chiediProprieta(MIN_FORZA, MAX_FORZA, "Inserisci la forza: ");
-    m->forza = forza;
-    */
     if(forza >= MIN_FORZA && forza <= MAX_FORZA) {
         m->forza = forza;
     }
+
+    if(forza < MIN_FORZA) {
+        m->vita = MIN_FORZA;
+    }
+    
+    if(forza > MAX_FORZA) {
+        m->vita = MAX_FORZA;
+    }
 }
 
+//ricava la forza del mostro
 int getForza(Mostro m) {
     return m.forza;
 }
 
+//ricava la vita del mostro
 int getVita(Mostro m) {
     return m.vita;
 }
@@ -121,14 +141,15 @@ void combattimento(Mostro *m1, Mostro *m2) {
 }
 
 int chiediDim(int min, int max, const char *messaggio) {
-    int dim;
-    
-    printf(messaggio);
-    do {
-        scanf("%d", &dim);
-    } while(dim < min || dim > max);
-    
-    return dim;
+    int n;
+	printf(messaggio);
+	do{
+		scanf("%d", &n);
+		if(n <= min || n > max){
+			printf("Inserisci un numero valido (%d-%d): ", min, max);
+		}
+	} while(n < min || n > max);
+	return n;
 }
 
 void convertiInMaiuscolo(char string[]) {
@@ -235,8 +256,7 @@ int main() {
         
         switch(scelta) {
             case 0:
-                printf("\nChiusura in corso!");
-                break;
+                break; //uscita
                 
             case 1:
                 creaMostroVoceMenu(mazzo, dim);
