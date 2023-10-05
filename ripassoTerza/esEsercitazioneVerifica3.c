@@ -7,11 +7,12 @@
 #define STRL 26
 #define DIM 100
 #define NOME_FILE "dati_4BROB_informatica.txt"
+#define FILE_MEDIA "medie4BROB.TXT"
 
 /*
 Author: Noemi Baruffolo
 date: 5/10/2023
-es. esEsercitazioneVerifica2
+es. esEsercitazioneVerifica3
 text:
 La 4B ROB affronta le prime 2 verifiche di informatica con la prof.ssa Cerutti (teoria) e il prof.
 Ferrua. Dal nuovo registro viene estratto il file “dati_4BROB_informatica.txt”
@@ -37,21 +38,18 @@ L’array di struct popolato come descritto sopra, dovrà essere salvato su un f
 MEDIE4BROB.TXT
 */
 
-typedef struct{
+typedef struct {
     char studente[STRL];
-    float voto_media;
+    int numVoti;
+    float sommaVoti;
 } Studente;
 
-void CalcolaMediaSingolaCaricataDaFile(Studente classe[], int dim, char nomeFile[]) {
+void CalcolaMediaOgniStudenteCaricataDaFile(Studente classe[], int dim, char nomeFile[]) {
     int cont = 0;
-    int j = 0;
-    int contV = 0;
     char data[STRL];
     char prof[STRL];
     char tipo[STRL];
-    char studenteN[STRL] = "Bagnis";
     float voto;
-    float somma = 0;
     FILE *fp;
 
     fp = fopen(nomeFile, "r");
@@ -59,32 +57,36 @@ void CalcolaMediaSingolaCaricataDaFile(Studente classe[], int dim, char nomeFile
     if (fp != NULL) {
         while (cont < dim && fscanf(fp, "%s", data) != EOF) {
             fscanf(fp, "%s %s %s %f", prof, tipo, classe[cont].studente, &voto);
-            if (strcmp(studenteN, classe[cont].studente) == 0) {
-                somma += voto;
-                contV++;
-            }
+            classe[cont].sommaVoti += voto;
+            classe[cont].numVoti++;
             cont++;
         }
         fclose(fp);
-
-        for (int k = 0; k < cont; k++) {
-            classe[k].voto_media = somma / contV; // Calcolo la media corretta
-            if (strcmp(studenteN, classe[k].studente) == 0) {
-                if(j == 0){
-                    printf("%s %.2f\n", classe[k].studente, classe[k].voto_media);
-                    j++;
-                }
-            }
-        }
     } else {
         printf("Il file della classe non esiste o è vuoto!\n");
+    }
+}
+
+void SalvaMedieSuFile(Studente classe[], int dim) {
+    FILE *fp = fopen(FILE_MEDIA, "w");
+    if (fp != NULL) {
+        for (int k = 0; k < dim; k++) {
+            if (classe[k].numVoti > 0) {
+                float media = classe[k].sommaVoti / classe[k].numVoti;
+                fprintf(fp, "%s %d %.2f\n", classe[k].studente, classe[k].numVoti, media);
+            }
+        }
+        fclose(fp);
+    } else {
+        printf("Impossibile aprire il file per salvare le medie.\n");
     }
 }
 
 int main() {
     Studente classe[DIM];
 
-    CalcolaMediaSingolaCaricataDaFile(classe, DIM, NOME_FILE);
+    CalcolaMediaOgniStudenteCaricataDaFile(classe, DIM, NOME_FILE);
+    SalvaMedieSuFile(classe, DIM);
 
-    return  0;
+    return 0;
 }
