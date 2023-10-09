@@ -7,6 +7,7 @@
 #define STRL 26
 #define DIM 100
 #define NOME_FILE "testo.txt"
+#define FILE_TEMP "temp.txt"
 
 /*
 Author: Noemi Baruffolo
@@ -15,23 +16,6 @@ es. 36
 text: Leggere un file di testo "testo.txt" carattere per carattere, modificarlo in modo che le parole dopo i 
 caratteri . ! ? siano in maiuscolo e quelli dopo i caratteri , ; : ( ) in minuscolo
 */
-
-void caricaDaFile(char str[], char nomeFile[]) {
-    int k = 0;
-
-    FILE *fp;
-
-    fp = fopen(nomeFile, "r");
-
-    if(fp != NULL){
-        while(fgets(str, STRL, fp) != '\0' && fgets(str, STRL, fp) != EOF){
-            k++;
-        }
-        fclose(fp);
-    } else {
-        printf("Il file della matrice non esiste o e' vuoto!\n");
-    }
-}
 
 //controlla se un carattere e' minuscolo o no
 bool isMinuscolo(char c){
@@ -54,47 +38,58 @@ bool isMaiuscolo(char c){
 }
 
 //trasforma il carattere minuscolo in maiuscolo
-void minuscMaiusc(char str[]) {
-	for(int k = 0; str[k] != '\0'; k++) {
-		if(isMinuscolo(str[k])){
-            str[k] -= 32; //con numeri codice ASCII
-        }
-	}
+char minuscMaiusc(char ch) {
+    ch -= 32; //con numeri codice ASCII
+    return ch;
 }
 
 //trasforma il carattere maiuscolo in minuscolo
-void maiuscMinusc(char str[]) {
-	for(int k = 0; str[k] != '\0'; k++) {
-		if(isMinuscolo(str[k])){
-            str[k] += 32; //con numeri codice ASCII
-        }
-	}
+char maiuscMinusc(char ch) {
+    ch += 32; //con numeri codice ASCII
+    return ch;
 }
 
-void modificaCaratteri(char str[]){
-    int k = 0;
-    //int lung = strlen(str);
-    while(k != '\0'){ // lung = strlen(str)
-        if(str[k] == ',' || str[k] == ';' || str[k] == ':' || str[k] =='(' || str[k] == ')'){
-            if (isMaiuscolo(str)){
-                maiuscMinusc(str);
-            }
-        } else if(str[k] == '.' || str[k] == '!' || str[k] == '?'){
-            if (isMinuscolo(str)){
-                minuscMaiusc(str);
-            }
-        }
+void caricaDaFileModificaCaratteri(char nomeFile[], char nomeFileTemp[]) {
+    char ch;
 
-        k++;
+    FILE *fp;
+    FILE *ft;
+
+    fp = fopen(nomeFile, "r");
+    ft = fopen(nomeFileTemp, "w");
+
+    bool u = false;
+    bool l = false;
+
+    if(fp != NULL){
+        while((ch = fgetc(fp)) != EOF){
+            if(ch == '.' || ch == '!' || ch == '?' ){
+                u = true;
+                
+            } else if(ch == ',' || ch == ';' || ch == ':' || ch == '(' || ch == ')'){
+                l = true;
+            }
+
+            if (isMaiuscolo(ch) && l == true){
+                l = false;
+                ch = maiuscMinusc(ch);
+            }
+
+            if (isMinuscolo(ch) && u == true){
+                u = false;
+                ch = minuscMaiusc(ch);
+            }
+            fputc(ch, ft);
+        }
+        fclose(ft);
+        fclose(fp);
+    } else {
+        printf("Il file della matrice non esiste o e' vuoto!\n");
     }
 }
 
 int main() {
-    char str[STRL];
-    caricaDaFile(str, NOME_FILE);
-    modificaCaratteri(str);
-
-    printf("%s", str);
+    caricaDaFileModificaCaratteri(NOME_FILE, FILE_TEMP);
 
     return 0;
 }

@@ -19,8 +19,16 @@ parola in un vettore di stringhe (supporre che non ci siano più di 100 parole d
 
 void readWrite(int dim, char nomeFile[]) {
     FILE *fp; //puntatori al file da modificare
+    int cont = 0;
     char ch;
+    char strVett[DIM][STRL];
+    bool successivo = false;
+
     if ((fp = fopen(nomeFile,"r"))!= NULL) {
+        while(cont < dim && fscanf(fp, "%20s", strVett[cont]) != EOF){
+            printf("%s\n", strVett[cont]);
+            cont++;
+        }
         fclose(fp); // chiusura del file da modificare
     } else{
         printf("Errore apertura file da modificare"); 
