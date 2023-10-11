@@ -1,7 +1,7 @@
 /*
 Baruffolo Noemi 4^AROB A.S 2023-2024
 
-                        Libreria di funzioni e procedure utili per lo svoglimento degli esercizi
+                    Libreria di funzioni e procedure in linguaggio C utili per lo svoglimento degli esercizi e velocizzare la scrittura del codice nelle verifiche
 */
 
 #include <stdio.h>
@@ -71,10 +71,26 @@ GIORNI MESI: "TRENTA GIORNI HA NOVEMBRE CON APRIL, GIUGNO E SETTEMBRE. DI VENTOT
 *31gg:
  tutti gli altri
 AREA POLIGONI:
+- rettangolo/parallelogramma: A=b⋅h  inversa b = A/h     h = A/b
+- quadrato: A = l^2      A = d^2/2   inverse: l = sqrt(A)    d = sqrt(2A)
+- rombi/quadrilateri con le diagonali perpendicolari: A = D*d/2 inverse: D = 2A/d   d = 2A/D
+- triangolo: A = b*h/2  inverse: b = 2A/h   h = 2A/b
+- trapezio: A = (B + b)*h/2 inverse: B = 2A/h-b     b = 2A/h-B
+- poligoni regolari: A = perimetro*apotema/2 = p*a/2 (un apotema = raggio della circonferenza inscritta del poligono)
+- cerchio: A = pi*r^2
 PERIMETRO POLIGONI:
+rettangolo/parallelogramma: P = (b + h)*2 oppure P = (b + l)*2
+- quadrato: P = l*4
+- rombi/quadrilateri con le diagonali perpendicolari: P = (L +l)*2
+- triangolo: P = a + b +c
+- trapezio: P = B + b +l1 +l2
+- poligoni regolari: P = l*6
+- cerchio: P = 2pi * r
 DIAGONALE PRINCIPALE E SECONDARIA:
 - Sommap=Sommap+mat [ i ][ i ]
 - Sommad=Sommad+mat [ i ][ N – i -1 ]
+NUEMERO DI FIBONACCI: I termini della successione sono detti numeri di Fibonacci e i primi 25 di essi sono: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,144, 233, 377, 610, 987,1597, 2584, 4181, 6765,10946, 17711, 28657, 46368, 75025.
+FATTORI PRIMI: sono i numeri primi che lo dividono esattamente, cioè senza resto 
 */
 
 //main
@@ -292,8 +308,58 @@ void copiaStringa(char* destinazione, const char* sorgente) {
     destinazione[i] = '\0';
 }
 
+//calcola il numero di Fibonacci
+int calcolaFibonacci(int n) {
+    if (n <= 1) return n;
+    int a = 0, b = 1, c;
+    for (int i = 2; i <= n; i++) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+
+//calcola massimo comun divisore
+int calcolaMCD(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+//calcola il minimo comune multiplo
+int calcolaLCM(int a, int b) {
+    return (a * b) / calcolaMCD(a, b);
+}
+
+//verifica se un anno e' bisestile
+bool isBisestile(int anno) {
+    bool bisestile = false;
+    if ((anno % 4 == 0 && anno % 100 != 0) || (anno % 400 == 0)) {
+        bisestile = true; // È bisestile
+    }
+    return bisestile; // Non è bisestile
+}
+
+//verifica se un numero e' primo o no
+bool isPrimo(int numero) {
+    bool primo = true;
+    if (numero <= 1){
+        primo = false; // I numeri minori o uguali a 1 non sono primi
+    } 
+    for (int cont = 2; cont * cont <= numero; cont++) {
+        if (numero % cont == 0) {
+            primo = false; // È divisibile, quindi non è primo
+        }
+    }
+    return primo; // È primo
+}
+
 //verifica se la stringa data è un palindromo o no
-int isPalindromo(const char *stringa) {
+bool isPalindromo(const char *stringa) {
     bool palindromo = true;
     int lung = strlen(stringa);
     for (int cont = 0; cont < lung / 2; cont++) {
@@ -682,6 +748,254 @@ int main() {
     return 0;
 }
 
+//cerca una parola in una frase
+int cercaParola(const char *parola, const char *array[], int dim) {
+    for (int cont = 0; cont < dim; cont++) {
+        if (strcmp(parola, array[cont]) == 0) {
+            return cont; // Parola trovata
+        }
+    }
+    return -1; // Parola non trovata
+}
+
+//conta il numero di parole in una frase
+int contaParole(const char *frase) {
+    int parole = 0;
+    bool inParola = false;
+
+    for (int cont = 0; frase[cont] != '\0'; cont++) {
+        if (frase[cont] == ' ' || frase[cont] == '\n' || frase[cont] == '\t') {
+            inParola = false;
+        } else if (!inParola) {
+            inParola = true;
+            parole++;
+        }
+    }
+
+    return parole;
+}
+
+//scomposizione in fattori primi
+void scomposizioneFattoriPrimi(int numero) {
+    for (int cont = 2; cont <= numero; cont++) {
+        while (numero % cont == 0) {
+            printf("%d ", cont);
+            numero /= cont;
+        }
+    }
+}
+
+//calcolo valore assoluto
+int valoreAssoluto(int numero) {
+    return (numero < 0) ? -numero : numero;
+}
+
+//calcola il numero di divisori
+int contaDivisori(int numero) {
+    int divisori = 0;
+
+    for (int cont = 1; cont <= numero; cont++) {
+        if (numero % cont == 0) {
+            divisori++;
+        }
+    }
+
+    return divisori;
+}
+
+//calcola la media ponderata
+int main() {
+    int numMaterie;
+    float voti[10], pesi[10], sommaPonderata = 0, sommaPesi = 0;
+
+    printf("Inserisci il numero di materie: ");
+    scanf("%d", &numMaterie);
+
+    for (int i = 0; i < numMaterie; i++) {
+        printf("Inserisci il voto per la materia %d: ", i + 1);
+        scanf("%f", &voti[i]);
+        printf("Inserisci il peso per la materia %d: ", i + 1);
+        scanf("%f", &pesi[i]);
+
+        sommaPonderata += voti[i] * pesi[i];
+        sommaPesi += pesi[i];
+    }
+
+    float mediaPonderata = sommaPonderata / sommaPesi;
+    printf("La media ponderata è %.2f\n", mediaPonderata);
+
+    return 0;
+}
+
+//verifica la corretteza delle parentesi di un esercizio
+bool verificaParentesi(const char *sequenza) {
+    int aperte = 0;
+
+    for (int i = 0; sequenza[i] != '\0'; i++) {
+        if (sequenza[i] == '(') {
+            aperte++;
+        } else if (sequenza[i] == ')') {
+            aperte--;
+        }
+
+        if (aperte < 0) {
+            return false; // Trovata una parentesi chiusa prima di una aperta
+        }
+    }
+
+    return aperte == 0; // Deve esserci lo stesso numero di parentesi aperte e chiuse
+}
+
+int main() {
+    char sequenza[1000];
+
+    printf("Inserisci una sequenza di parentesi: ");
+    gets(sequenza);
+
+    if (verificaParentesi(sequenza)) {
+        printf("Le parentesi sono bilanciate.\n");
+    } else {
+        printf("Le parentesi non sono bilanciate.\n");
+    }
+
+    return 0;
+}
+
+//conta i giorni di un mese inserito in input
+#include <stdio.h>
+
+int main() {
+    int mese, anno;
+
+    printf("Inserisci un mese (1-12): ");
+    scanf("%d", &mese);
+    printf("Inserisci un anno: ");
+    scanf("%d", &anno);
+
+    int giorniInMese;
+
+    if (mese < 1 || mese > 12) {
+        printf("Mese non valido.\n");
+    } else if (mese == 2) {
+        if ((anno % 4 == 0 && anno % 100 != 0) || (anno % 400 == 0)) {
+            giorniInMese = 29;
+        } else {
+            giorniInMese = 28;
+        }
+    } else if (mese == 4 || mese == 6 || mese == 9 || mese == 11) {
+        giorniInMese = 30;
+    } else {
+        giorniInMese = 31;
+    }
+
+    if (giorniInMese > 0) {
+        printf("Il mese %d dell'anno %d ha %d giorni.\n", mese, anno, giorniInMese);
+    }
+
+    return 0;
+}
+
+//calcolo intersezioni tra due insiemi
+void calcolaIntersezione(int insieme1[], int dimensione1, int insieme2[], int dimensione2) {
+    printf("Insieme intersezione: { ");
+    for (int cont = 0; cont < dimensione1; cont++) {
+        for (int k = 0; k < dimensione2; k++) {
+            if (insieme1[cont] == insieme2[k]) {
+                printf("%d ", insieme1[cont]);
+                break;
+            }
+        }
+    }
+    printf("}\n");
+}
+
+//Verifica se la matrice è un quadrato magico (la somma di ogni riga, colonna e diagonale è uguale)
+int main() {
+    int n;
+
+    printf("Inserisci la dimensione del quadrato magico (n x n): ");
+    scanf("%d", &n);
+
+    int quadratoMagico[15][15];
+
+    printf("Inserisci gli elementi del quadrato magico:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &quadratoMagico[i][j]);
+        }
+    }
+
+    int sommaRiga, sommaColonna, sommaDiagonalePrincipale = 0, sommaDiagonaleSecondaria = 0;
+
+    // Calcola la somma della diagonale principale e della diagonale secondaria
+    for (int i = 0; i < n; i++) {
+        sommaDiagonalePrincipale += quadratoMagico[i][i];
+        sommaDiagonaleSecondaria += quadratoMagico[i][n - 1 - i];
+    }
+
+    // Verifica se la somma delle diagonali è uguale
+    if (sommaDiagonalePrincipale != sommaDiagonaleSecondaria) {
+        printf("Non è un quadrato magico.\n");
+        return 0;
+    }
+
+    // Verifica se la somma di ogni riga e colonna è uguale alla somma delle diagonali
+    for (int i = 0; i < n; i++) {
+        sommaRiga = 0;
+        sommaColonna = 0;
+        for (int j = 0; j < n; j++) {
+            sommaRiga += quadratoMagico[i][j];
+            sommaColonna += quadratoMagico[j][i];
+        }
+        if (sommaRiga != sommaDiagonalePrincipale || sommaColonna != sommaDiagonalePrincipale) {
+            printf("Non è un quadrato magico.\n");
+            return 0;
+        }
+    }
+
+    printf("È un quadrato magico.\n");
+
+    return 0;
+}
+
+//calcola sconti
+float calcolaScontoNegativo(float prezzo, float percentuale) {
+    return prezzo - (prezzo * (percentuale / 100));
+}
+
+float calcolaScontoPositivo(float prezzo, float percentuale) {
+    return prezzo + (prezzo * (percentuale / 100));
+}
+
+//sconti e IVA
+int main() {
+    float prezzo_base, tot, sconto_negativo, sconto_positivo, iva;
+
+    // Input del prezzo di base e la percentuale totale
+    printf("Inserisci il prezzo di base: ");
+    scanf("%f", &prezzo_base);
+    printf("Inserisci la percentuale totale: ");
+    scanf("%f", &tot);
+
+    // Calcolo dello sconto negativo e positivo
+    sconto_negativo = prezzo_base * (tot / 100);
+    sconto_positivo = prezzo_base * (tot / 100);
+    
+    // Calcolo dell'IVA
+    iva = prezzo_base * 0.22;  // Esempio: IVA al 22%
+
+    // Calcolo del prezzo finale
+    float prezzo_scontato = prezzo_base - sconto_negativo + sconto_positivo + iva;
+
+    // Output dei risultati
+    printf("Sconto negativo: %.2f\n", sconto_negativo);
+    printf("Sconto positivo: %.2f\n", sconto_positivo);
+    printf("IVA: %.2f\n", iva);
+    printf("Prezzo finale: %.2f\n", prezzo_scontato);
+
+    return 0;
+}
+
 
                                                                     //ALGORITMI FONDAMENTALI:
 
@@ -838,7 +1152,7 @@ Peggiore n
 Migliore 1(non c’è e il primo è maggiore
 */
 
-/////////// ALGORITMI DI ORDINAMENTO ///////////////
+                                                    /////////// ALGORITMI DI ORDINAMENTO ///////////////
 
 //5)
 //RICRCA BINARIA ODICOTOMICA
