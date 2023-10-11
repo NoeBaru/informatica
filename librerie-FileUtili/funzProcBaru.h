@@ -11,31 +11,70 @@ Baruffolo Noemi 4^AROB A.S 2023-2024
 #include <time.h>
 #include <math.h>
 
-srand(time(NULL)) //per impostare il tempo diverso sempre, sennò stessa combinazione ogni volta e non va bene
+#define DIM 1004
+#define NR 2
+#define NC 2
+#define STRL 26
+
+#define LIM_MIN 0
+#define LIM_MAX 100
+
+#define NOME_FILE "prova.txt"
+
+
+srand(time(NULL)); //per impostare il tempo diverso sempre, sennò stessa combinazione ogni volta e non va bene
 
 rn = LIM_MIN + rand() % (LIM_MAX + 1 - LIM_MIN); //crea un numero random
 
-fflush(stdin) //per pulire il buffer prima che venga inserito un carattere da tastiera
+fflush(stdin); //per pulire il buffer prima che venga inserito un carattere da tastiera
 
-fopen(nomeFile, "r") // r: read, w: write, a: append
+fopen(nomeFile, "r"); // r: read, w: write, a: append
 
-fclose(fp) //chiusura del file
+fclose(fp); //chiusura del file
 
-strlen()// restituisce la lunghezza di una stringa.
+strlen();// restituisce la lunghezza di una stringa.
 
-strcpy()// copia una stringa in un'altra.
+strcpy();// copia una stringa in un'altra.
 
-strcat()// concatena due stringhe.
+strcat();// concatena due stringhe.
 
-strcmp()// confronta due stringhe e restituisce un valore intero che indica se le due stringhe sono uguali o quale delle due è più grande o più piccola dell'altra.
+strcmp();// confronta due stringhe e restituisce un valore intero che indica se le due stringhe sono uguali o quale delle due è più grande o più piccola dell'altra.
 
-strchr()// cerca la prima occorrenza di un carattere all'interno di una stringa e restituisce un puntatore a quella posizione.
+strchr();// cerca la prima occorrenza di un carattere all'interno di una stringa e restituisce un puntatore a quella posizione.
 
-strstr()// cerca la prima occorrenza di una sottostringa all'interno di una stringa e restituisce un puntatore alla posizione di inizio della sottostringa.
+strstr();// cerca la prima occorrenza di una sottostringa all'interno di una stringa e restituisce un puntatore alla posizione di inizio della sottostringa.
 
-/*Queste funzioni sono fondamentali per la manipolazione delle stringhe in C. Ad esempio, la funzione strlen() può essere utilizzata per verificare se una stringa è vuota
-o meno, mentre la funzione strcpy() può essere utilizzata per copiare una stringa in un'altra variabile. La funzione strcmp() può essere utilizzata per ordinare le
-stringhe o per confrontarle. La funzione strchr() e la funzione strstr() sono utilizzate per trovare una particolare parte di una stringa.
+/*Queste funzioni sono fondamentali per la manipolazione delle stringhe in C.
+Ad esempio, la funzione strlen() può essere utilizzata per verificare se una stringa è vuota o meno,
+mentre la funzione strcpy() può essere utilizzata per copiare una stringa in un'altra variabile.
+La funzione strcmp() può essere utilizzata per ordinare le stringhe o per confrontarle.
+La funzione strchr() e la funzione strstr() sono utilizzate per trovare una particolare parte di una stringa.
+*/
+
+/*                                               DEFINIZIONI MATEMATICHE E CULTURA GENERALE
+NUMERI PRIMI: numeri interi positivi che possono essere divisi soltanto per sé stessi e per 1
+IVA: Moltiplica il prezzo netto per 0,22 e ottieni l'importo dell'IVA. Un'altra opzione è dividere il prezzo netto per 100 e poi moltiplicarlo per 22. L'importo dell'IVA è di 136,40 euro.
+FATTORIALE DI UN NUMERO: moltiplicare tutti i numeri naturali che lo precedono (escluso lo zero), con esso incluso. Es: il 4! darà come risultato 4 x 3 x 2 x 1 = 24
+STAGIONI:
+- primavera: 20/04
+- estate 21/06
+- autunno 22/09
+- inverno 21/12
+GIORNI MESI: "TRENTA GIORNI HA NOVEMBRE CON APRIL, GIUGNO E SETTEMBRE. DI VENTOTTO CE N'È UNO, TUTTI GLI ALTRI NE HAN TRENTUNO."
+*30gg:
+ - novembre
+ - aprile
+ - giugno
+ - settembre
+*28gg:
+ - febbraio
+*31gg:
+ tutti gli altri
+AREA POLIGONI:
+PERIMETRO POLIGONI:
+DIAGONALE PRINCIPALE E SECONDARIA:
+- Sommap=Sommap+mat [ i ][ i ]
+- Sommad=Sommad+mat [ i ][ N – i -1 ]
 */
 
 //main
@@ -51,6 +90,15 @@ typedef struct{
     char carattere;
     bool risposta;
 } Contenitore;
+
+                                                                    //FUNZ_PROC STRING.H
+
+int length = strlen(string1); // Calcola la lunghezza della stringa string1
+strcpy(destination, string1);  // Copia la stringa string1 in destination
+strcat(destination, string2);  // Concatena string2 alla fine di destination
+int compare = strcmp(string1, string2); // Confronta due stringhe (restituisce 0 se sono uguali)
+char *ptr = strchr(string1, 'o'); // Cerca il primo carattere 'o' nella stringa string1
+char *substring = strstr(string1, "ell"); // Cerca la sottostringa "ell" in string1
 
                                                                         //CONTROLLI
 
@@ -222,6 +270,53 @@ void stampaMat(int mat[][NC], int nr, int nc){
 }
 
                                                                 //UTILITA'
+//converte i gradi fahrenheit in celsius
+float fahrenheit = (celsius * 9 / 5) + 32;
+
+// Funzione per calcolare la lunghezza di una stringa
+int lunghezzaStringa(const char* stringa) {
+    int lunghezza = 0;
+    while (stringa[lunghezza] != '\0') {
+        lunghezza++;
+    }
+    return lunghezza;
+}
+
+// Funzione per copiare una stringa in un'altra
+void copiaStringa(char* destinazione, const char* sorgente) {
+    int i = 0;
+    while (sorgente[i] != '\0') {
+        destinazione[i] = sorgente[i];
+        i++;
+    }
+    destinazione[i] = '\0';
+}
+
+//verifica se la stringa data è un palindromo o no
+int isPalindromo(const char *stringa) {
+    bool palindromo = true;
+    int lung = strlen(stringa);
+    for (int cont = 0; cont < lung / 2; cont++) {
+        if (stringa[cont] != stringa[lung - 1 - cont]) {
+            palindromo = false; // Non è un palindromo
+        }
+    }
+    return palindromo; // È un palindromo
+}
+
+int main() {
+    char stringa[100];
+
+    printf("Inserisci una parola: ");
+    scanf("%s", stringa);
+
+    if (isPalindromo(stringa)) {
+        printf("%s è un palindromo!\n", stringa);
+    } else {
+        printf("%s non è un palindromo!\n", stringa);
+    }
+    return 0;
+}
 
 
 //dice se può essere un triangolo o no
@@ -420,9 +515,15 @@ float calcolaMin(float vett[], int dim){
 
 //calcola la media
 float calcolaMedia(float vett[], int dim) {
-
+    float somma = 0.0;
+    float media;
+    for(int cont = 0; cont < dim; cont++){
+        somma += vett[cont];
+        cont++;
+    }
+    media = somma / (float)dim;
+    printf("La media di tutti i voti(%d) della classe e': %.2f", dim, media);
 }
-
 
 //genera una stringa con caratteri casuali
 void randomStr(char str[], int dim) {
@@ -560,6 +661,28 @@ bool isSpeculare(int v[], int dim) {
 	return spec;
 }
 
+//calcola l'Interesse composto
+int main() {
+    float capitaleIniziale, tassoInteresse, importoFinale;
+    int anni;
+
+    printf("Inserisci il capitale iniziale: ");
+    scanf("%f", &capitaleIniziale);
+    printf("Inserisci il tasso di interesse annuale (in percentuale): ");
+    scanf("%f", &tassoInteresse);
+    printf("Inserisci il numero di anni: ");
+    scanf("%d", &anni);
+
+    tassoInteresse = tassoInteresse / 100; // Converte il tasso in decimale
+
+    importoFinale = capitaleIniziale * pow(1 + tassoInteresse, anni);
+
+    printf("L'importo finale dopo %d anni è %.2f\n", anni, importoFinale);
+
+    return 0;
+}
+
+
                                                                     //ALGORITMI FONDAMENTALI:
 
 
@@ -571,7 +694,7 @@ void scambio(int *a, int *b) {
 
 //1)
 //NON ordinati DISGIUNTI
-int NonOrdDisg(int v[],int n, int x){
+int nonOrdDisg(int v[],int n, int x){
     int tro, k;
     tro = -1;
     k = 0;
@@ -592,7 +715,7 @@ Medio n/2
 */
 
 //versione con variabile booleana che restituisce solo la presenza o l’assenza dell’elemento cercato
-bool NonOrdDisg (int v[], int n, int x) {
+bool nonOrdDisg (int v[], int n, int x) {
     int k = 0;
     bool tro = false;
     while (k < n && !tro){ //tro == false
@@ -608,7 +731,7 @@ return tro; //restituisce true se l’ha trovato, false altrimenti
 //2)
 //ORDINATI DISGIUNTI
 //vettore ordinato a elementi disgiunti con una variabile in più per codice più comprensibile
-int OrdDisg1(int v[],int n, int x) {
+int ordDisg1(int v[],int n, int x) {
     int tro, k;
     bool continua;
     tro = -1;
@@ -627,7 +750,7 @@ return tro ;
 }
 
 //vettore ordinato a elementi disgiunti
-int OrdDisg2(int v[],int n, int x) {
+int ordDisg2(int v[],int n, int x) {
     int tro, k;
     tro = -1;
     k = 0 ;
@@ -671,7 +794,7 @@ per testare v[2 3 3 3 4 5 5]
 //4)
 //ORDINATI NON disgiunti
 //vettore ordinato a elementi non disgiunti con una variabile in più per codice più comprensibile
-int OrdNonDisg1(int v[], int n, int x) {
+int ordNonDisg1(int v[], int n, int x) {
     int nx, k; //n^ occorrenze, contatore
     bool continua;
     nx = 0;
@@ -692,7 +815,7 @@ return nx; //numero di occorrenze
 }
 
 //vettore ordinato a elementi non disgiunti
-int OrdNonDisg2(int v[], int n, int x) {
+int ordNonDisg2(int v[], int n, int x) {
     int nx, k;
     nx = 0;
     k = 0;

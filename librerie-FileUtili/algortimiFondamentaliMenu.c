@@ -152,7 +152,7 @@ Migliore 0
 
 //1)
 //NON ordinati DISGIUNTI
-int NonOrdDisg(int v[],int n, int x){
+int nonOrdDisg(int v[],int n, int x){
     int tro, k;
     tro = - 1;
     k = 0;
@@ -178,7 +178,7 @@ test con v[2 4 6 7]
 //2)
 //ORDINATI DISGIUNTI
 //vettore ordinato a elementi disgiunti
-int OrdDisg2(int v[],int n, int x) {
+int ordDisg2(int v[],int n, int x) {
     int tro, k;
     tro = - 1;
     k = 0 ;
@@ -204,7 +204,7 @@ da testare v[0 5 7 3 5]
 //3)
 //NON ordinati NON disgiunti
 //vettore non ordinato a elementi non disgiunti restituisce le occorrenze
-int NonOrdNonDisg(int v[],int n, int x) {
+int nonOrdNonDisg(int v[],int n, int x) {
     int nx, k;
     nx = 0;
     for (k = 0; k < n; k++){
@@ -222,7 +222,7 @@ per testare v[2 3 3 3 4 5 5]
 //4)
 //ORDINATI NON disgiunti
 //vettore ordinato a elementi non disgiunti
-int OrdNonDisg2(int v[], int n, int x) {
+int ordNonDisg2(int v[], int n, int x) {
     int nx, k;
     nx = 0;
     k = 0;
@@ -312,25 +312,25 @@ int main() {
                 case 1:
                     printf("Inserisci il numero da cercare: \n");
                     scanf("%d", &x);
-                    printf("\nL'elemento trovato %d volte", NonOrdDisg(v, dim, x));
+                    printf("\nL'elemento trovato %d volte", nonOrdDisg(v, dim, x));
                     break;
 
                 case 2:
                     printf("Inserisci il numero da cercare: \n");
                     scanf("%d", &x);
-                    printf("\nL'elemento trovato in posizione %d", OrdDisg2(v, dim, x));
+                    printf("\nL'elemento trovato in posizione %d", ordDisg2(v, dim, x));
                     break;
 
                 case 3:
                     printf("Inserisci il numero da cercare: \n");
                     scanf("%d", &x);
-                    printf("\nL'elemento trovato %d volte", NonOrdNonDisg(v, dim, x));
+                    printf("\nL'elemento trovato %d volte", nonOrdNonDisg(v, dim, x));
                     break;
 
                 case 4:
                     printf("Inserisci il numero da cercare: \n");
                     scanf("%d", &x);
-                    printf("\nL'elemento trovato %d volte", OrdNonDisg2(v, dim, x));
+                    printf("\nL'elemento trovato %d volte", ordNonDisg2(v, dim, x));
                     break;
 
                 case 5:
