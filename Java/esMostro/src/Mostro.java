@@ -13,8 +13,15 @@ public class Mostro {
         if (forza >= MIN_FORZA&& forza <= MAX_FORZA){
             this.forza = forza;
         } else
-            this.forza = MIN_FORZA
-        this.vita = vita;
+            this.forza = MIN_FORZA;
+
+        if(vita >= MIN_VITA && vita <= MAX_VITA) {
+            this.vita = vita;
+        } else if (vita < MIN_VITA) {
+            this.vita = MIN_VITA;
+        } else if(vita > MAX_VITA) {
+            this.vita = MAX_VITA;
+        }
     }
     public String toString() { //over reading, riscrittura di un metodo che già esiste
     return nome + ": forza = " + forza + ", vita = " + vita ; //restituisce nome, vita e forza del mostro
