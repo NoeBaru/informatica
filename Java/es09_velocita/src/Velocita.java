@@ -2,7 +2,7 @@ public class Velocita {
     private float velKmH;
 
     public Velocita(){
-        this.velKmH = 0;
+        velKmH = 0;
     }
 
     public void setVelKmH(float velKmH){
@@ -18,5 +18,9 @@ public class Velocita {
     public float getVelMs(){
 
         return velKmH / 3.6f;
+    }
+
+    public String toString(){
+        return "la velcita' in kmh e': " + velKmH;
     }
 }
