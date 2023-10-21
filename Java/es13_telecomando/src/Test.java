@@ -8,7 +8,14 @@ Usare gli attributi privati: canale, acceso, volume, VOLUME_MAX, CANALE_MAX
 */
 
 public class Test {
-    public static void main(String[] args) {
-
+    public static void main(String [] args){
+        Telecomando volume;
+        volume = new Telecomando();
+        volume.setOnOff(True);
+        System.out.println(volume.acceso);
+        Telecomando canale;
+        canale = new Velocita();
+        canale.setCanale(canale.setCanale());
+        System.out.println(canale.getCanale());
     }
 }

@@ -4,23 +4,31 @@ public class Velocita {
     public Velocita(){
         velKmH = 0;
     }
+    private float convertiKmHinMperS(float velKmH){
 
-    public void setVelKmH(float velKmH){
+        return (float)(velKmH / 3.6);
+    }
+    private float convertiMperSinKmH(float velKmH){
+
+        return (float)(velKmH * 3.6);
+    }
+    public void setVelKmH(float velKmH) {
+
         this.velKmH = velKmH;
     }
-    public float getVelKmH(){
+    public float getVelKmH() {
+
         return velKmH;
     }
-    //definisco e restituisco i m/s
-    public void setVelMs(float velMs){
-        this.velKmH = velMs * 3.6f;
-    }
-    public float getVelMs(){
+    public void setVelMperS(float velMperS){
 
-        return velKmH / 3.6f;
+        velKmH = convertiMperSinKmH(velMperS);
     }
+    public float getVelMperS(){
 
+        return convertiKmHinMperS(velKmH);
+    }
     public String toString(){
-        return "la velcita' in kmh e': " + velKmH;
+        return "velocita in kmH: " + velKmH + " velocita in m/s: " + convertiKmHinMperS(velKmH);
     }
 }
