@@ -8,16 +8,16 @@ public class Telecomando {
     private static int VOLUME_DEFAULT = 100;
     private static int CANALE_DEFAULT = 999;
 
-    public Telecomando(int volumeMax, int canaleMax){
+    public Telecomando(int volumeMax, int canaleMax){ //costruttore
         CANALE_MAX = canaleMax;
         if(volumeMax <= 1){
-            this.VOLUME_MAX = VOLUME_DEFAULT;
+            this.volume = VOLUME_DEFAULT;
         } else{
             this.VOLUME_MAX = volumeMax;
         }
 
         if(canaleMax <= 1){
-            this.CANALE_MAX = CANALE_DEFAULT;
+            this.canale = CANALE_DEFAULT;
         } else{
             this.CANALE_MAX = canaleMax;
         }
@@ -25,6 +25,11 @@ public class Telecomando {
     }
 
     public void setOnOff(){
+        if(acceso == false){
+            acceso = true;
+        } else{
+            acceso = false;
+        }
 
     }
 
@@ -37,18 +42,20 @@ public class Telecomando {
     }
 
     public void abbassaVolume(){
-        if(volume > 0) {
+        if(acceso == true) {
             volume -= 1;
-        } else{
-            System.out.println("Il volume è già al minimo");
+        }
+        if(volume <= 0){
+            volume = 0;
         }
     }
 
     public void alzaCanale(){
-        if(canale < CANALE_MAX) {
+        if(acceso == true) {
             canale += 1;
-        } else{
-            canale = 1;
+        }
+        if(canale <= 0){
+            canale = CANALE_MAX;
         }
     }
 
@@ -60,7 +67,10 @@ public class Telecomando {
         }
     }
 
-    public void setCanale(int canale){
+    public void setCanale(int canale){ //canale è quella locale, per usare quella sopra devo scrivere this. (riferimento all'oggetto su cui è invocato setCanale
+        if(canale <= CANALE_MAX && canale > 0){
+            this.canale = canale;
+        }
 
     }
     public boolean isAcceso(){
@@ -69,6 +79,7 @@ public class Telecomando {
         } else if(acceso){
             acceso = false;
         }
+        return acceso
     }
     public int getVolume(){
         return volume;
@@ -82,9 +93,12 @@ public class Telecomando {
         } else if(mute){
             mute = false;
         }
+        return mute;
     }
     public void muteOnOff(){
-
+        if(acceso){
+            mute = !mute;
+        }
     }
     public String toString(){
         return "il volume e': " + volume + "il canale e': " + canale;
