@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "TastiBaseMIO.C": "cpp",
+        "TastiBasePallaMIO.C": "cpp",
+        "typeinfo": "c",
+        "limits": "c",
+        "conio.h": "c"
+    }
+}
