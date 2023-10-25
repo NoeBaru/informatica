@@ -16,7 +16,10 @@ dell'oggetto altroNom passato per parametro
 
 public class Test {
     public static void main(String[] args) {
-
+        Nominativo nominativo = new Nominativo("Rossi", "Mario", 15, 6, 1980, 'M');
+        System.out.println(nominativo.toString());
+        System.out.println("Iniziali: " + nominativo.iniziali());
+        System.out.println("Iniziali CF: " + nominativo.inizialiCF());
     }
 
 }
