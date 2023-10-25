@@ -16,10 +16,38 @@ dell'oggetto altroNom passato per parametro
 
 public class Test {
     public static void main(String[] args) {
-        Nominativo nominativo = new Nominativo("Rossi", "Mario", 15, 6, 1980, 'M');
-        System.out.println(nominativo.toString());
-        System.out.println("Iniziali: " + nominativo.iniziali());
-        System.out.println("Iniziali CF: " + nominativo.inizialiCF());
-    }
+        Nominativo mio;
 
+        mio = new Nominativo();
+
+        mio.setNome("S");
+        System.out.println("il nome è: " + mio.getNome());
+        mio.setCognome("A");
+        System.out.println("Il cognome è: " + mio.getCognome());
+        mio.setSesso('F');
+        System.out.println("Il sesso è: " + mio.getSesso());
+        //mio.setNascita(15, 01, 2016);
+        System.out.println("Il giorno di nascita è: " + mio.getGiorno() + " Il mese di nascita è: " + mio.getMese() + " L' anno di nascita è: " + mio.getAnno());
+
+        System.out.println(mio.toString());
+
+        System.out.println("le prime tre iniziali sono: " + mio.iniziali());
+
+        System.out.println("Il codice fiscale è: " + mio.inizialiCF());
+
+        Nominativo tuo = new Nominativo();
+
+        tuo.setNome("Simone");
+        tuo.setCognome("Arrigoni");
+        tuo.setSesso('m');
+        //tuo.setNascita(15, 11, 2019);
+
+        if(mio.isOmocodice(tuo)){
+            System.out.println("il codice fiscale è lo stesso");
+        }else{
+            System.out.println("Il codice fiscale non è lo stesso");
+        }
+
+
+    }
 }

@@ -1,63 +1,159 @@
 public class Nominativo {
-    private String cognome;
     private String nome;
+    private String cognome;
+    private char sesso;
     private int giorno;
     private int mese;
     private int anno;
 
-    public boolean omocodice;
+    public Nominativo(){
+        nome = "";
+        cognome = "";
+        sesso = 'M';
+        giorno = 1;
+        mese = 1;
+        anno = 2000;
+    }
 
-    private final int ANNO_ATTUALE = 2023;
-    private char sesso;
+    private boolean sessoOk(char sesso){
+        return sesso == 'M' || sesso == 'm' || sesso == 'F' || sesso == 'f';
+    }
 
-    public Nominativo(String cognome, String nome, int giorno, int mese, int anno, char sesso) {
-        this.cognome = cognome;
+    public Nominativo(String nome, String cognome, char sesso, int giorno, int mese, int anno){
+        this();
+
         this.nome = nome;
-        this.giorno = giorno;
-        this.mese = mese;
-        this.anno = anno;
-        this.sesso = sesso;
-    }
-    public void setNomeCognome(){
-
-    }
-    public String getNomeCognome(){
-        return cognome;
-    }
-    public void setSesso(){
-
-    }
-    public String getSesso(){
-        return sesso;
-    }
-    public void setData(){
-
-    }
-    public String getNomeCognome() {
-        return nome + " " + cognome;
+        this.cognome = cognome;
+        if(sessoOk(sesso)){
+            this.sesso = sesso;
+        }
     }
 
-    public char getSesso() {
-        return sesso;
+    public void setNome(String nome){
+        this.nome = nome;
     }
 
-    public String getDataDiNascita() {
-        return "data: " + giorno + "/" + mese + "/" + anno);
+    public void setCognome(String cognome){
+        this.cognome = cognome;
     }
-    public char iniziali(){
-        return inizialiNome + inizialiCognome;
-    }
-    public char IniziailiCF() {
 
-        return inizialiCognome + inizialiNome + dataNascita;
-    }
-    public boolean eOmocodice(Nominativo nome){
-
-        return this.inizialiCF().equals(nome.inizialiCF());
+    public void setSesso(char sesso){
+        if(sessoOk(sesso)){
+            this.sesso = sesso;
+        }
 
     }
 
-    public String toString(){
-        return "Nome: " + nome + "\nCognome: " + cognome + "\nData di Nascita: " + getDataDiNascita() + "\nSesso: " + sesso;
+    /*public void setNascita(int giorno, int mese, int anno){
+        if()
+    }*/
+
+    public String getNome(){return nome;}
+    public String getCognome(){return cognome;}
+    public char getSesso(){return sesso;}
+    public int getGiorno(){return giorno;}
+    public int getMese(){return mese;}
+    public int getAnno(){return anno;}
+
+    public String iniziali(){
+        String nomeXXX = nome + "xxx";
+        String cognomeXXX= cognome + "xxx";
+        String iniz = nomeXXX.substring(0,3).toLowerCase() +
+                cognomeXXX.substring(0,3).toUpperCase();
+        return iniz;
+    }
+
+    private boolean isVocale(char car){
+        return (car == 'a' || car == 'e' || car == 'i' || car == 'o' || car == 'u' ||
+                car == 'A' || car == 'E' || car == 'I' || car == 'O' || car == 'U');
+    }
+
+    private boolean isConsonante(char car){
+        return !isVocale(car) && ((car > 'a' && car <= 'z') || (car > 'A' && car <= 'Z'));
+    }
+
+    public String inizialiCF(){
+        String CF = "";
+        char car;
+        int j = 0;
+        int k = 0;
+        String temp = "";
+
+        while (k < cognome.length() && j < 3){
+            car = cognome.charAt(k);
+            if(isConsonante(car)){
+                temp += car;
+                j++;
+            }
+
+            k++;
+        }
+        k = 0;
+        while (k < cognome.length() && j < 3){
+            car = cognome.charAt(k);
+            if(isVocale(car)){
+                temp += car;
+                j++;
+            }
+            k++;
+        }
+
+        CF = (temp + "xxx").substring(0,3);
+
+        k = 0;
+        j = 0;
+        temp = "";
+        while (k < nome.length() && j < 3){
+            car = nome.charAt(k);
+            if(isConsonante(car)){
+                temp += car;
+                j++;
+            }
+            k++;
+        }
+
+        while (k < nome.length() && j < 3){
+            car = nome.charAt(k);
+            if(isVocale(car)){
+                temp += car;
+                j++;
+            }
+            k++;
+        }
+
+        CF = CF + (temp + "xxx").substring(0,3);
+
+        int cifreAnno = (anno % 100);
+
+        if(cifreAnno < 10){
+            CF = CF + 0 + cifreAnno;
+        }else {
+            CF = CF + cifreAnno;
+        }
+
+        String carattereMese = "ABCDEHLMPRST";
+
+        CF = CF + carattereMese.charAt(mese - 1);
+
+        if(sesso == 'M'){
+            if(giorno < 10){
+                CF = CF + 0 + giorno;
+            }else {
+                CF += giorno;
+            }
+        }else{
+            CF = CF + (giorno + 40);
+        }
+
+        return CF.toUpperCase();
+    }
+
+    public boolean isOmocodice(Nominativo altroNom){
+        return this.inizialiCF().equals(altroNom.inizialiCF());
+    }
+
+    @Override
+    public String toString() {
+        return "Il nome è: " + nome + " Il cognome è: " + cognome + " Il sesso è: " + sesso + " La data di nascita è: " + anno + "/" + mese + "/"+ giorno;
     }
 }
