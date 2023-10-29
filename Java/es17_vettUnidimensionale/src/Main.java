@@ -14,21 +14,27 @@ public class Main {
         int[] numCasuale = new int[quant];
         int min = 10;
         int max = 100;
+        int j;
 
         Random rand = new Random();
 
         System.out.println("Ecco 20 numeri casuali tra 10 e 100:");
 
         for (int cont = 0; cont < quant; cont++) {
-            if(cont == 1) {
-                for (int j = 0; j < cont; j++) {
-                    int numCasuale[cont] = rand.nextInt(max - min + 1) + min;
-                    if (numCasuale[cont] == numCasuale[j]){
-                        numCasuale[cont] = rand.nextInt(max - min + 1) + min;
-                    }
+            boolean duplicato;
+            do{
+                numCasuale[cont] = (int) (Math.random() * (max - min + 1) + min);
+                duplicato = false;
+                j = 0;
+            }while(j < cont && duplicato == false){
+                if (numCasuale[cont] == numCasuale[j]){
+                    duplicato = true;
+
                 }
+                j++;
             }
-            System.out.println(numCasuale);
+        for (int el : numCasuale){
+            System.out.println(el + " ");
         }
 
     }
