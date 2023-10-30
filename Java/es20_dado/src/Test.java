@@ -17,7 +17,7 @@ public class Test {
         dado2.lanciaDado();
         System.out.println("dado2:" + dado2.getLancio());
 
-        Secchiello sec1 = new Secchiello(2);
+        Secchiello sec1 = new Secchiello(3);
         sec1.add(dado1);
         sec1.add(dado2);
         sec1.lancio();

@@ -2,7 +2,6 @@ public class Secchiello {
     private static final int MAX_DADI = 10;
     private int numDadi;
     private Dado[] vettDadi;
-    private int somma;
     public Secchiello(int numMaxDadi){
         numDadi = 0;
         somma = 0;
@@ -14,27 +13,35 @@ public class Secchiello {
     }
 
     public void add(Dado d){
-        if(numDadi < vettDadi.length){
-            vettDadi[numDadi] = d;
-            numDadi++;
+        if(d != null) {
+            if (numDadi < vettDadi.length) {
+                vettDadi[numDadi] = d;
+                numDadi++;
+            }
         }
     }
 
     public void lancio(){
         for(int cont = 0; cont < numDadi; cont++){
-            somma += vettDadi[cont].lanciaDado();
+            vettDadi[cont].lanciaDado();
         }
     }
 
     public int getSomma(){
+        int somma = 0;
+        for(int cont  = 0; cont < numDadi; cont++){
+            somma += vettDadi[cont].getLancio();
+        }
         return somma;
     }
 
     public String toString() {
-        String s = "Secchiello " + "somma: " + somma + ' ';
-        for(int cont = 0; cont < numDadi; cont++){
-            s = s.concat(vettDadi[cont].getLancio() + " ");
+        String s = "";
+        for(Dado dado: vettDadi) {
+            if(dado != null) {
+                s += "[" + dado.toString() + "]";
+            }
         }
-        return s;
+        return s += "\nLa somma totale: " + getSomma();
     }
 }
