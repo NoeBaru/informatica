@@ -21,7 +21,10 @@ vettore con le pompe di carburante. Realizzare i metodi;
 public class Test {
     public static void main(String[] args) {
         Carburante c1 = new Carburante();
-        System.out.println(c1.toString());
+        Carburante c2 = new Carburante("diesel", 10.0f);
+        c1.setTipo("GPL");
+        Distributore dis = new Distributore()("Q8", )
+;        System.out.println(c1.toString());
 
 
     }
