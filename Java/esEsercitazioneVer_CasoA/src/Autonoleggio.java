@@ -8,8 +8,9 @@ public class Autonoleggio {
     public Autonoleggio(){
 
     }
-    public Autonoleggio(String nome, String indirizzo, Responsabile responsabile, Veicolo[] veicoli){
-
+    public Autonoleggio(String nome, String indirizzo, Responsabile responsabile){
+        this.nome = nome;
+        this.indirizzo = indirizzo;
     }
     public boolean aggiungiVeicolo(Veicolo veicolo) {
         if(veicoli.length != null){
@@ -30,6 +31,11 @@ public class Autonoleggio {
     public Veicolo[] trovaTuttiIVeicoli(){
         return;
     }
+    public String toString(){
+        String s = "";
+        return s;
+    }
+
     public String toString(){
         String s = "";
         return s;
