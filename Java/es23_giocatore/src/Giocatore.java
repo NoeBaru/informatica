@@ -2,20 +2,20 @@ public class Giocatore {
     private String nome;
     private double punteggio;
     private int eta;
-    private Ruolo ruolo;
+    private Ruolo ruoli;
     private final int VALORE_MIN = 1;
     private final int VALORE_MAX = 10;
 
-    public Giocatore(String nome, int eta, Ruolo ruolo){
+    public Giocatore(String nome, int eta, Ruolo ruoli){
         this.nome = nome;
         if(eta > 0) {
             this.eta = eta;
         }
         this.punteggio = VALORE_MIN;
-        this.ruolo = ruolo;
+        this.ruoli = ruoli;
     }
 
-    public Giocatore(String nome, int eta, double valore, Ruolo ruolo){
+    public Giocatore(String nome, int eta, double valore, Ruolo ruoli){
         this.nome = nome;
         if(eta > 0) {
             this.eta = eta;
@@ -25,7 +25,7 @@ public class Giocatore {
         } else{
             this.punteggio = VALORE_MIN;
         }
-        this.ruolo = ruolo;
+        this.ruoli = ruoli;
     }
     public String getNome(){
         return nome;
@@ -52,15 +52,15 @@ public class Giocatore {
             this.eta = nEta;
         }
     }
-    public void setRuolo(Ruolo ruolo){
-        this.ruolo = ruolo;
+    public void setRuolo(Ruolo ruoli){
+        this.ruoli = ruoli;
     }
     public Ruolo getRuolo(){
-        return ruolo;
+        return ruoli;
     }
 
     public String toString(){
-        return "nome:" + nome + " pt: " + punteggio + " età: " + eta + "ruolo: " + ruolo;
+        return "nome:" + nome + " pt: " + punteggio + " età: " + eta + "ruolo: " + ruoli;
     }
 
 }
