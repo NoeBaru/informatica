@@ -16,4 +16,8 @@ public class Pinacoteca {
             }
         }
     }
+    public String toString(){
+        String s = "";
+        return s;
+    }
 }

@@ -22,6 +22,7 @@ public class Test {
         Quadro q1 = new Quadro();
         Quadro q2 = new Quadro();
         Pinacoteca p1 = new Pinacoteca();
+        p1.add(q1);
         System.out.println(p1.toString());
 
     }
