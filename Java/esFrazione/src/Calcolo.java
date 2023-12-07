@@ -1,10 +1,11 @@
 public class Calcolo {
     private int nFraz;
     private Frazione[] frazioni;
-    private final int TOT;
+    private final int TOT = 100;
     private Operatore operazione;
 
     public Calcolo(){
+        //controlli vari
         frazioni = new Frazione[TOT];
         nFraz = 0;
 
@@ -18,7 +19,8 @@ public class Calcolo {
         }
     }
     public float getValore(){
-
+        float valore;
+        return valore;
     }
     public String toString(){
         String s = "" + "\n";

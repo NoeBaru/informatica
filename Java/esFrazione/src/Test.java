@@ -22,6 +22,12 @@ Per esempio +1/2 + -1/2 = 0.0
 */
 public class Test {
     public static void main(String[] args) {
+        Frazione f1 = new f1();
+
+        Calcolo c1 = new c1();
+        c1.add(f1);
+        System.out.println(c1.toString());
+
 
     }
 }
