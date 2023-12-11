@@ -7,5 +7,14 @@ public class Test {
         l1.setStipendio(1100);
         LavoratoreConStraordinariPagati l2 = new LavoratoreConStraordinariPagati("Matteo", 5, 10);
         System.out.println(l1.getStipendio());
+        Lavoratore l1, l2;
+        LavoratoreConStraordinariPagati lv1, lv2;
+        lv1 = new LavoratoreConStraordinariPagati("ciao", 4, 2400);
+        l2 = new Lavoratore("Giuseppe", 7);
+        l2.setStipendio( 2333);
+        //DOWN casting non possibile lv2 = new Lavoratore("Mario", 1);
+        l1 = lv1; //up casting sempre possibile, come facesse così: l1 = (Lavoratore)lv1
+        //DOWN casting: lv2 = (LavoratoreConStraordinariPagati)l2;
+        lv1 = (LavoratoreConStraordinariPagati)l1;
     }
 }

@@ -28,5 +28,5 @@ public class Lavoratore {
             this.stipendio = stipendio;
     }
 
-    public String toString(){return "nome" + nome + "livello" + livello;}
+    //public String toString(){return "nome" + nome + "livello" + livello;}
 }
