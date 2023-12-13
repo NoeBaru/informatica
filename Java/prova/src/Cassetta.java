@@ -43,7 +43,7 @@ public abstract class Cassetta {
     }
 
     public void setnCopie(int nCopie) {
-          if(nCopie >= 0)
+        if(nCopie >= 0)
             this.nCopie = nCopie;
     }
 
