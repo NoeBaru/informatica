@@ -12,11 +12,17 @@ eccezioni necessarie. Realizzare una classe Test in cui si istanzia una videotec
 il valore complessivo
 */
 public class Test {
-    CD c1 = new CD("Ciao", 120);
+    CD c1 = new CD("Ciao", 120, 10);
     CD.setPrezzo(49.99);
     System.out.println(c1);
     DVD d1 = new DVD("Tarzan", 7200);
-    d1.add(TipoLingua.ITA);
-    d1.add(TipoLingua.ITA);
+    d1.addLingua(TipoLingua.ITA);
+    d1.addLingua(TipoLingua.ITA);
     System.out.println(c1);
+    VideotecaVector v1 = new VideotecaVector("Baruffolo", "ViaRoma");
+    v1.add(c1);
+    v1.add(d1);
+    System.out.println(v1.getValoreNegozio());
+    v1.compro(1);
+    v1.vendo(0);
 }

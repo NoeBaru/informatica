@@ -27,6 +27,6 @@ public class CD extends Cassetta{
     public double getPrezzoScontato(){return prezzo - (prezzo/100) * getSconto();}
 
     public String toString() {
-        return  super.toString() + nBrani=" + nBrani;
+        return  super.toString() + "nBrani=" + nBrani;
     }
 }

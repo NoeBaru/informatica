@@ -47,7 +47,7 @@ public class DVD extends Cassetta {
         return s;
     }
 
-    public void setLingue(TipoLingua lingue) {
+    public void setLingue(TipoLingua[] lingue) {
         this.lingue = lingue;
     }
 

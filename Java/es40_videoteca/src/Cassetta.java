@@ -12,7 +12,7 @@ public abstract class Cassetta {
             this.durataSec = durataSec;
         else
             this.durataSec = 1;
-        mioCodice = codice++;
+        this.mioCodice = codice++;
         nCopie = 0;
         sconto = 0;
     }
@@ -63,9 +63,6 @@ public abstract class Cassetta {
         this.mioCodice = mioCodice;
     }
 
-    public void setTitolo(String titolo) {
-        this.titolo = titolo;
-    }
     public String toString() {
         return "mioCodice: " + mioCodice + ", titolo: " + titolo + ", durataSec: " + durataSec + ", sconto: " + sconto + ", nCopie: " + nCopie;
     }
