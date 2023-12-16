@@ -28,5 +28,11 @@ public class Lavoratore {
             this.stipendio = stipendio;
     }
 
-    //public String toString(){return "nome" + nome + "livello" + livello;}
+    @Override
+    public String toString() {
+        return "nome: " + nome + '\'' +
+                " livello: " + livello +
+                " MIN_STIPENDIO: " + MIN_STIPENDIO +
+                " stipendio: " + stipendio;
+    }
 }

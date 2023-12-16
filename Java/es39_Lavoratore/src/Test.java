@@ -16,5 +16,9 @@ public class Test {
         l1 = lv1; //up casting sempre possibile, come facesse così: l1 = (Lavoratore)lv1
         //DOWN casting: lv2 = (LavoratoreConStraordinariPagati)l2;
         lv1 = (LavoratoreConStraordinariPagati)l1;
+        Azienda a1 = new Azienda("Baruffolo", "ViaRoma");
+        a1.add(l1);
+        a1.add(lv1);
+        System.out.println(a1.toString());
     }
 }

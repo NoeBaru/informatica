@@ -18,4 +18,9 @@ public class LavoratoreConStraordinariPagati extends Lavoratore{
     public static void setRetribuzioneOraria(float retribuzioneOraria) {
         LavoratoreConStraordinariPagati.retribuzioneOraria = retribuzioneOraria;
     }
+
+    @Override
+    public String toString() {
+        return  super.toString() + "oreStraordinario=" + oreStraordinario;
+    }
 }
