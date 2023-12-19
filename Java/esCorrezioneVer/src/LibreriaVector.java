@@ -48,7 +48,7 @@ public class LibreriaVector {
         float prezzoG = 0;
         float prezzoR = 0;
 
-        for(int cont = 0; cont < libri.size(); cont++){
+        /*for(int cont = 0; cont < libri.size(); cont++){
             switch(libri.get(cont).getGenere()){
                 case HORROR:
                     if(contH == 0){
@@ -73,11 +73,34 @@ public class LibreriaVector {
                     contR++;
             }
         }
-        System.out.println("Horror:" + contH + "prezzo minimo: " + prezzoH + "gialli: " + contG + "prezzo minimo: " + prezzoG + "romanzi:" + contR + "prezzo minimo: " + prezzoR );
+        System.out.println("Horror:" + contH + "prezzo minimo: " + prezzoH + "gialli: " + contG + "prezzo minimo: " + prezzoG + "romanzi:" + contR + "prezzo minimo: " + prezzoR );*/
 
-        /*for (Libro l : libri) { //l ricevein automatico tutti gli elementi dentro libri e li scorre uno alla volta
-
-        }*/
+        for (Libro l : libri) { //l ricevein automatico tutti gli elementi dentro libri e li scorre uno alla volta
+            case Generi.HORROR:
+                if (contH == 0) {
+                    prezzoH = libri[l].getValore();
+                } else if (libri[l].getValore() < prezzoH) {
+                        prezzoH = libri[l].getValore();
+                    }
+                    contH++;
+            break;
+            case Generi.GIALLO:
+                if (contH == 0) {
+                    prezzoG = libri[l].getValore();
+                } else if (libri[l].getValore() < prezzoG) {
+                    prezzoG = libri[l].getValore();
+                }
+                contG++;
+            break;
+            case Generi.ROMANZO:
+                if (contR == 0) {
+                    prezzoR = libri[l].getValore();
+                } else if (libri[l].getValore() < prezzoR) {
+                    prezzoR = libri[l].getValore();
+                }
+                contR++;
+            break;
+        }
     }
     public String toString(){
         String s = "";
