@@ -13,5 +13,9 @@ public class Test {
         l.add(l1);
         l.add(l2);
         l.statistica();
+
+        LibreriaVector lv = new LibreriaVector("vettore", "peve");
+
+        lv.statisticaEnum();
     }
 }
