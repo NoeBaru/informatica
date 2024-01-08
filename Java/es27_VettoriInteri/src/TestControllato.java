@@ -9,28 +9,16 @@ text: Creare una classe VettoriInteri che:
 • Metodo che elimina la prima occorrenza nell’array, dato un numero (se l’elemento non esiste solleva l’eccezione controllata personalizzata ErroreElementoInesistente
 • Metodo toString() che restituisce gli elementi separati da "|"
 */
-public class Test {
+public class TestControllato {
     public static void main(String[] args){
         VettoriInteri v = new VettoriInteri(1);
-        /*try { //controlla entrambi
-            v.add(6);
-            v.add(8);
-            System.out.println(v.minimo());
-        } catch (ErroreVettorePieno | ErroreVettoreVuoto e) { //se uno dei due solleva l'eccezione, restituisce il messaggio di errore scelto, ma non si pianta (meglio)
-            System.out.println(e.getMessage());
-        }*/
-        //possono sollevare eccezioni, quindi faccio:
+        // i v.add() possono sollevare eccezioni, quindi faccio:
         try { //controlla entrambi
-            v.add(6);
-            v.add(8);
-        } catch (ErroreVettorePieno e) { //se uno dei due solleva l'eccezione, restituisce il messaggio di errore scelto, ma non si pianta (meglio)
+            //v.add(6);
+            //v.add(8);
+            System.out.println(v.minimo());
+        } catch (ErroreVettoreVuoto e) { //se uno dei due solleva l'eccezione, restituisce il messaggio di errore scelto, ma non si pianta (meglio)
             System.out.println(e.getMessage());
         }
-
-        try{
-            System.out.println(v.minimo());
-        } catch (ErroreVettoreVuoto e){
-                System.out.println(e.getMessage());
-            }
     }
 }

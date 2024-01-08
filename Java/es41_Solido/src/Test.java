@@ -1,3 +1,5 @@
+import Solido.*;
+
 public class Test {
     public static void main(String[] args) {
         Solido[] solidi = new Solido[4];

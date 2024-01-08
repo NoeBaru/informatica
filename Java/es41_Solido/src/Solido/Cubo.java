@@ -1,8 +1,13 @@
-public class Cubo extends Solido{
+package Solido;
+
+import Solido.Solido;
+
+public class Cubo extends Solido {
     private double lato;
 
     public Cubo(double pesoSpecifico, double lato) {
         super(pesoSpecifico);
+
         if(lato >= 0)
             this.lato = lato;
         else

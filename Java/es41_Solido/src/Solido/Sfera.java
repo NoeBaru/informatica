@@ -1,4 +1,8 @@
-public class Sfera extends Solido{
+package Solido;
+
+import Solido.Solido;
+
+public class Sfera extends Solido {
     private double raggio;
 
     public Sfera(double ps, double raggio) {

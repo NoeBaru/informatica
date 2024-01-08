@@ -1,3 +1,5 @@
+package Solido;
+
 public abstract class Solido {
     private double pesoSpecifico;
 
