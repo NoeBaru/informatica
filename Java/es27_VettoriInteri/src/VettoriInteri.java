@@ -22,7 +22,7 @@ public class VettoriInteri {
 
         String regex = "(\\d+\\|)+";
         Pattern p = Pattern.compile(regex); //controlla che la regex sia giusta
-        Matcher m = p.matcher(str); //crea un oggetto che controlli sia formatta acorrettamente la stringa
+        Matcher m = p.matcher(str); //crea un oggetto che controlli sia formatta correttamente la stringa
         if (m.matches()){
            String[] campi = str.split("\\|");
 
