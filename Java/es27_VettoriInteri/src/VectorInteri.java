@@ -30,5 +30,17 @@ public class VectorInteri {
             throw  new ErroreVettoreVuoto();
         }
     }
+    public void elimina(int elem) throws ErroreElementoInesistente{
+        if(!vett.removeElement(elem)){
+            throw new ErroreElementoInesistente();
+        }
+    }
 
+    public String toString(){
+        String s = "";
+        for(int cont: vett){
+            s += cont + "|";
+        }
+        return s;
+    }
 }
