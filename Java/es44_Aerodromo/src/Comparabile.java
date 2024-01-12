@@ -1,11 +1,10 @@
 public interface Comparabile {
 
     boolean isSuperiore(Comparabile x){
-        boolean sup = false;
-        if(x == null){
-            sup = false;
+        if(x == null || getClass() != x.getClass()){
+            return false;
         }
-        return sup;
+        return true;
     }
 
 }
