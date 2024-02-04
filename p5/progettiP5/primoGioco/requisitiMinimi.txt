@@ -1,0 +1,4 @@
+- Possibilità di navigare tra più schermate (esempio: star, pausa, GameOver)
+- gestione su più livelli(cambio di schermata e difficoltà)
+- poter finire/perdere
+- restituire il punteggio ottenuto
