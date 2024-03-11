@@ -6,6 +6,7 @@ let pausa = false;
 let larghezza = 1536;
 let altezza = 703;
 
+/immagini/
 let pausaImg;
 let gameOverImg;
 let sfondoImg;
@@ -16,6 +17,7 @@ let menuImg;
 
 let font;
 
+/suoni/
 let canestroSound;
 let menuSound;
 let gameSound;
@@ -23,6 +25,7 @@ let gameOverSound;
 
 let inizioPulsante;
 
+/timer/
 let canestroTimer = 0;
 let canestroTempoLimite = 15;
 let intervalloPalloni = 6000;
@@ -35,12 +38,14 @@ let tempoCorrente;
 
 let proporzionaleLarghezzaPieno;
 let proporzionaleLarghezzaVuoto;
-let proporzionaleDiametro;
+let proporzionaleDiametro; 
 
+/pt/
 let punteggioMassimo;
 let ultimoPunteggio;
 
 function preload() {
+  //carica le immagini del gioco
   sfondoImg = loadImage('./img/stadiumBasket.png');
   palloneImg = loadImage('./img/basketball.png');
   pausaImg = loadImage('./img/pauseBasket.png');
@@ -51,6 +56,7 @@ function preload() {
 
   font = loadFont('./Basket.ttf'); //font scritte incollate sullo sfondo (i numeri non potevano essere usati)
 
+  //carica i suoni del gioco
   soundFormats('mp3', 'ogg');
   canestroSound = loadSound('./sound/canestro.mp3');
   menuSound = loadSound('./sound/backgroundMenu.mp3');
@@ -59,33 +65,39 @@ function preload() {
   gameOverTrumpetSound = loadSound('./sound/gameOverTrombaSound.mp3');
 }
 
+//fa iniziare il gioco
 function avviaGioco() {
   menuSound.stop();
   inGioco = true;
   if (inizioPulsante) {
+    //nasconde il pulsante durante il gioco
     inizioPulsante.hide();
   }
   loop();
   gameSound.loop();
 }
 
+/CANESTRO/
 class Canestro {
   constructor() {
     this.x = larghezza / 2;
     this.y = altezza - 50;
     this.larghezza = 60;
     this.altezza = 70;
+    //console.log("" + this.x + this.y + this.altezza + this.larghezza);
   }
 
+  //gestisce il movimento delle coordinate x in base alle x del mouse
   update(mouseX) {
     this.x = mouseX;
   }
-
+  //mostra il canestro
   display() {
     proporzionaleLarghezzaVuoto = canestroVuotoImg.larghezza * (this.altezza / canestroVuotoImg.altezza);
     image(canestroVuotoImg, this.x - proporzionaleLarghezzaVuoto / 2, this.y - this.altezza / 2, proporzionaleLarghezzaVuoto, this.altezza);
   }
 
+  //gestisce le collisioni
   intersects(pallone) {
     distanza = dist(this.x, this.y, pallone.x, pallone.y);
     return distanza < pallone.diametro / 2 + this.altezza / 2 &&
@@ -93,6 +105,7 @@ class Canestro {
   }
 }
 
+/PALLONE/
 class Pallone {
   constructor() {
     this.x = random(larghezza);
@@ -101,35 +114,43 @@ class Pallone {
     this.velocita = 3;
   }
 
+  //gestisce il movimento delle coordinate x in base alle x del mouse
   update() {
     this.y += this.velocita;
   }
 
+  //mostra i palloni
   display() {
-    proporzionaleDiametro = palloneImg.larghezza * (this.diametro / palloneImg.altezza);
+    proporzionaleDiametro = palloneImg.width * (this.diametro / palloneImg.height);
     image(palloneImg, this.x - proporzionaleDiametro / 2, this.y - this.diametro / 2, proporzionaleDiametro, this.diametro);
   }
-
+  //controlla se il pallone finisce fuori dallo schermo
   fuoriSchermo() {
     return this.y > altezza;
   }
 }
 
+//durante il gioco aumenta sempre di più la velocità di discesa dei palloni
 function aumentaVelocita() {
   for (let pallone of palloni) {
     pallone.velocita += 0.1;
   }
 }
 
+//gestisce la fine del gioco se si esce o se si perde
 function gameOver() {
   pausa = false;
   inGioco = false;
   salvaPunteggio();
   visualizzaPunteggiMassimi();
+
+  //gestisce i suoni
   gameOverSound.play();
   gameOverTrumpetSound.play();
+  //imposta lo sfondo
   image(gameOverImg, 0, 0, larghezza, altezza);
 
+  //scritta punteggio in corso
   fill(0);
   textSize(32);
   textAlign(CENTER, CENTER);
@@ -147,6 +168,7 @@ function gameOver() {
   noLoop();
 }
 
+//gestisce il menu della pausa
 function mostraMenuPausa() {
   gameSound.stop();
   image(pausaImg, 0, 0, larghezza, altezza);
@@ -155,7 +177,8 @@ function mostraMenuPausa() {
 function togglePausa() {
   pausa = !pausa;
 
-  if (pausa) {
+  if (pausa) { //se è in pausa
+    //mostra il pulsante invisibile per continuare la partita
     continuaImgButton = createButton('');
     continuaImgButton.style('background', 'rgba(0, 0, 0, 0)');
     continuaImgButton.style('border', '0');
@@ -164,6 +187,7 @@ function togglePausa() {
     continuaImgButton.mousePressed(continuaGioco);
     gameSound.play();
 
+    //mostra il pulsante invisibile per uscire dalla partita
     esciImgButton = createButton('');
     esciImgButton.style('background', 'rgba(0, 0, 0, 0)');
     esciImgButton.style('border', '0');
@@ -173,13 +197,15 @@ function togglePausa() {
 
     noLoop();
   } else {
+    //nasconde i pulsanti invisibili
     continuaImgButton.hide();
     esciImgButton.hide();
     loop();
-    gameSound.play();
+    gameSound.play(); //gestisce il suono del gioco
   }
 }
 
+//fa continuare il gioco, riprendendo la musica e nascondendo i pulsanti invisibili
 function continuaGioco() {
   pausa = false;
   gameSound.play();
@@ -188,6 +214,7 @@ function continuaGioco() {
   loop();
 }
 
+//fa uscire dal gioco cambiando musica e uscendo dal gioco
 function esciDalGioco() {
   noLoop();
   continuaImgButton.hide();
@@ -196,6 +223,7 @@ function esciDalGioco() {
   gameOver();
 }
 
+//salva i punteggi fatti nel corso della partita
 function salvaPunteggio() {
   punteggioMassimo = localStorage.getItem('punteggioMassimo') || 0;
 
@@ -206,6 +234,7 @@ function salvaPunteggio() {
   localStorage.setItem('ultimoPunteggio', punteggio);
 }
 
+//stampa i punteggiMassimi nella consoleLog
 function visualizzaPunteggiMassimi() {
   punteggioMassimo = localStorage.getItem('punteggioMassimo') || 0;
   ultimoPunteggio = localStorage.getItem('ultimoPunteggio') || 0;
@@ -217,9 +246,10 @@ function visualizzaPunteggiMassimi() {
 function setup() {
   createCanvas(larghezza, altezza);
 
-  canestro = new Canestro();
-  palloni = [];
+  canestro = new Canestro(); //crea il canestro
+  palloni = []; //crea l'array di palloni
 
+  //crea il pulsante pausa invisibile
   pauseButton = createButton('');
   pauseButton.style('background', 'rgba(0, 0, 0, 0)');
   pauseButton.style('border', '0');
@@ -229,12 +259,13 @@ function setup() {
 }
 
 function draw() {
-  background(sfondoImg);
+  background(sfondoImg); //imposta lo sfondo del gioco
 
   if (!inGioco) {
-    //menuSound.play();
-    image(menuImg, 0, 0, larghezza, altezza);
+    //menuSound.play(); //fa andare tutto a scatti se lo attivo
+    image(menuImg, 0, 0, larghezza, altezza); //imposta lo sfondo del menu
 
+    //crea il pulsante invisibile di inizio del gioco
     inizioPulsante = createButton('');
     inizioPulsante.style('background', 'rgba(0, 0, 0, 0)');
     inizioPulsante.style('border', '0');
@@ -249,19 +280,24 @@ function draw() {
     return;
   }
 
+  /*gestisce l'animazione del canestro pieno e vuoto in base a se passsa il pallone  nel canestro vuoto o meno, mette il canestro pieno, dopo tot secondi
+  toglie il canestro pieno e rimette quello vuoto*/
   if (canestroTimer > 0) {
     canestroTimer--;
-    proporzionaleLarghezzaPieno = canestroPienoImg.larghezza * (canestro.altezza / canestroPienoImg.altezza);
+    proporzionaleLarghezzaPieno = canestroPienoImg.width * (canestro.altezza / canestroPienoImg.height);
     image(canestroPienoImg, canestro.x - proporzionaleLarghezzaPieno / 2, canestro.y - canestro.altezza / 2, proporzionaleLarghezzaPieno, canestro.altezza);
   } else {
-    proporzionaleLarghezzaVuoto = canestroVuotoImg.larghezza * (canestro.altezza / canestroVuotoImg.altezza);
+    proporzionaleLarghezzaVuoto = canestroVuotoImg.width * (canestro.altezza / canestroVuotoImg.height);
     image(canestroVuotoImg, canestro.x - proporzionaleLarghezzaVuoto / 2, canestro.y - canestro.altezza / 2, proporzionaleLarghezzaVuoto, canestro.altezza);
   }
 
+  //aggiorna le correnti coordinate x del canestro abbinandole a quelle correnti del mouse
   canestro.update(mouseX);
   canestro.display();
 
   tempoCorrente = millis();
+
+  //gestisce il flusso dei palloni nuovi
   if (tempoCorrente - ultimoPallone > intervalloPalloni) {
     palloni.push(new Pallone());
     ultimoPallone = tempoCorrente;
@@ -270,7 +306,7 @@ function draw() {
   for (let i = palloni.length - 1; i >= 0; i--) {
     palloni[i].update();
     palloni[i].display();
-    if (canestro.intersects(palloni[i])) {
+    if (canestro.intersects(palloni[i])) { //gestisce le collisioni del pallone i con il canestro
       canestroSound.play();
       palloni.splice(i, 1);
       palloni.push(new Pallone());
