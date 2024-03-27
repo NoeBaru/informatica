@@ -279,7 +279,7 @@ function draw() {
     mostraMenuPausa();
     return;
   }
-
+  
   /*gestisce l'animazione del canestro pieno e vuoto in base a se passsa il pallone  nel canestro vuoto o meno, mette il canestro pieno, dopo tot secondi
   toglie il canestro pieno e rimette quello vuoto*/
   if (canestroTimer > 0) {
