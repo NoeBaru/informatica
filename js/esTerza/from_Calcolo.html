@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form calcolo</title>
+</head>
+<body>
+    <form>
+        <label>Inserisci il primo valore: <input type="text" size="20" id="valore1"></label>
+        <label>Inserisci il secondo valore: <input type="text" size="20" id="valore2"></label>
+        <button id="calcola">Calcola</button> <!--submit invia, uso il button in sto caso che equivale al submit, ma non dobbiamo
+                                            mandare nulla nel web, voglio solo che il mio pc faccia un calcolo a livello client-->
+
+        </form>
+</body>
+</html>
+
+                                                <!--            JS              -->
+
+<script>
+    //1) recuperare gli elementi dal form
+    const valore1 = document.getElementById("valore1");
+    const valore2 = document.getElementById("valore2");
+    const bottone_calcolo = document.getElementById("calcola");
+    let somma = 0;
+
+    //quando si clicca il bottone si passa da HTML a JS
+    bottone_calcolo.addEventListener("click", function(e){ //e o event, ma si puo' anche non mettere, per correttezza si'
+        e.preventDefault(); //blocca prima del SUBMIT
+        console.log("valore 1:" + valore1.value); //per prendere e stampare il valore, .style per lo stile invece
+
+
+        if(valore1.value == ""){
+            valore1.style.backgroundColor = "red";
+            alert("non e' possibile fare il calcolo per assenza di valori"); //apre un pop-up
+
+        } else if(valore2.value == ""){
+            valore2.style.backgroundColor = "red";
+            alert("non e' possibile fare il calcolo per assenza di valori"); //apre un pop-up
+            
+            }else{
+                //somma = valore1.value + (valore2.value); //viene 53
+                somma = parseInt(valore1.value) + parseInt(valore2.value); //con il cast diventa 8
+
+                alert(somma);
+                valore1.style.backgroundColor = "green";
+                valore2.style.backgroundColor = "green";
+        }
+    });
+</script>

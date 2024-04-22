@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form>
+        <label>Utente: <input type="text" size="20" id="fuser"></label>
+        <label id="label_psw">Password: <input type="password" size="20" id="fpsw" ></label>
+        
+        <input type="submit" id="fsubmit" value="invia">
+    </form>
+    
+</body>
+</html>
+
+<script>
+    let num = 2;
+    x = "ciao";
+    console.log(num);
+
+    const user = document.getElementById("fuser");
+    const psw = document.getElementById("fpsw");
+    //console.log("utente: " + user.value);
+
+    const bottone_invio = document.getElementById("fsubmit");
+    bottone_invio.onclick = function(){
+        console.log("nome utente: " + user.value);
+
+        psw.style.backgroundColor = "red";
+    }
+
+    bottone_invio.addEventListener("click", function(e){
+        e.preventDefault(); //blocca prima del SUBMIT
+        console.log("nome utente: " + user.value);
+
+        if(psw.value == ""){
+            psw.style.backgroundColor = "red";
+        } else{
+            psw.style.backgroundColor = "green";
+        }
+    })
+    
+    bottone_invio.addEventListener("click", function(e){
+        e.preventDefault(); //blocca prima del SUBMIT
+        console.log("nome utente: " + user.value);
+
+        if(user.value == ""){
+            user.style.backgroundColor = "red";
+        } else{
+            user.style.backgroundColor = "green";
+        }
+    })
+
+</script>

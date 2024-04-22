@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+<style>
+    .error{
+        color:red;
+    }
+
+</style>
+
+
+</head>
+<body>
+    <form>
+        <label id="labeluser">Utente: <input type="text" size="20" id="fuser"></label><br>
+        <label id="labelpsw">Password: <input type="password" size="20" id="fpsw" ></label><br>
+        
+        <input type="submit" id="fsubmit" value="invia">
+    </form>
+    <div id="dmessaggi"></div>
+    
+</body>
+</html>
+
+
+
+<script>
+
+const utente = document.getElementById("fuser");
+const psw = document.getElementById("fpsw");
+
+const labelutente = document.getElementById("labeluser");
+const labelpsw = document.getElementById("labelpsw");
+
+const invio = document.getElementById("fsubmit");
+
+/********************************************************
+    elem.insertAdjacentHTML(where, html).
+
+    Il primo parametro è una parola-codice che specifica dove inserire in relazione a elem. Deve essere una delle seguenti:
+
+    "beforebegin" – inserisce html immediatamente prima di elem,
+    "afterbegin" – inserisce html dentro elem, all’inizio,
+    "beforeend" – inserisce html dentro elem, alla fine,
+    "afterend" – inserisce html immediatamente dopo elem.
+
+    *********************************************************/
+
+
+
+invio.addEventListener("click", function(e){
+    let messaggi = document.getElementById("dmessaggi");
+   
+    clearForClass("error")
+    
+    e.preventDefault(); //blocca prima del SUBMIT
+    if(psw.value == ""){
+        
+        let div_errore_utente = document.createElement('div');
+        div_errore_utente.innerHTML='<p class="error" style="display: inline"> errore psw vuota</p>';
+        messaggi.appendChild(div_errore_utente);
+        labelpsw.style.color = 'red';
+    }else{
+        labelpsw.insertAdjacentHTML('beforeend','<p class="error" style="display: inline"> '+psw.value+ ' è una buona password</p>')
+        labelpsw.style.color = 'blue'
+    }
+
+    
+
+})
+
+
+//Cancello tutti gli elementi class="error"
+function clearForClass(classe) {
+  let elem = document.getElementsByClassName(classe)
+  
+  while(elem.length>0){
+     elem[0].parentNode.removeChild(elem[0])
+    }
+ }
+
+
+
+
+
+</script>

@@ -1,0 +1,254 @@
+PROCEDURA DI SINTESI - pre verifica
+FORM
+- elementi HTML (label, input, div, button,..)
+
+per il JAVASCRIPT
+- vado ad aprire il tag <script>
+come prima cosa
+- dichiaro le const che conterrano il valore preso dall'elemento HTML con il getElementbyId
+
+potrò utilizzare queste const nel seguente modo
+- const elemento1.value -> userà il valore
+- const elemento1.style -> userà lo stile per possibile modifica
+
+bisognerà gestire gli EVENTI
+- l'evento sarà sempre legato ad un elemento del HTML (ad es. un button)
+dovrò quindi anche per i button attribuire ad una const l'elemento da getElementById
+
+- con esempio: bottone.addEventListener("click", funzione)
+- dentro questa funziona si svolgeranno le azioni richieste (principalmente lo sviluppo
+del programma)
+
+//////////////
+
+ESERCIZI:
+ |
+ |
+ |
+ _
+\ /
+  
+FORM_BASE:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form>
+        <label>Utente: <input type="text" size="20" id="fuser"></label>
+        <label id="label_psw">Password: <input type="password" size="20" id="fpsw" ></label>
+        
+        <input type="submit" id="fsubmit" value="invia">
+    </form>
+    
+</body>
+</html>
+
+<script>
+    let num = 2;
+    x = "ciao";
+    console.log(num);
+
+    const user = document.getElementById("fuser");
+    const psw = document.getElementById("fpsw");
+    //console.log("utente: " + user.value);
+
+    const bottone_invio = document.getElementById("fsubmit");
+    bottone_invio.onclick = function(){
+        console.log("nome utente: " + user.value);
+
+        psw.style.backgroundColor = "red";
+    }
+
+    bottone_invio.addEventListener("click", function(e){
+        e.preventDefault(); //blocca prima del SUBMIT
+        console.log("nome utente: " + user.value);
+
+        if(psw.value == ""){
+            psw.style.backgroundColor = "red";
+        } else{
+            psw.style.backgroundColor = "green";
+        }
+    })
+    
+    bottone_invio.addEventListener("click", function(e){
+        e.preventDefault(); //blocca prima del SUBMIT
+        console.log("nome utente: " + user.value);
+
+        if(user.value == ""){
+            user.style.backgroundColor = "red";
+        } else{
+            user.style.backgroundColor = "green";
+        }
+    })
+
+</script>
+
+//////////////////////////////////////////////////////////////
+
+FORM_CACLOLO_BASE:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 2</title>
+</head>
+<body>
+    <form>
+        <label>Inserisci il primo valore: <input type="text" size="20" id="valore1"></label>
+        <label>Inserisci il secondo valore: <input type="text" size="20" id="valore2"></label>
+        <button id="calcola">Calcola</button> <!--submit invia, uso il button in sto caso che equivale al submit, ma non dobbiamo
+                                            mandare nulla nel web, voglio solo che il mio pc faccia un calcolo a livello client-->
+
+        </form>
+</body>
+</html>
+
+<script>
+    //1) recuperare gli elementi dal form
+    const valore1 = document.getElementById("valore1");
+    const valore2 = document.getElementById("valore2");
+    const bottone_calcolo = document.getElementById("calcola");
+    let somma = 0;
+
+    //quando si clicca il bottone si passa da HTML a JS
+    bottone_calcolo.addEventListener("click", function(e){ //e o event, ma si puo' anche non mettere, per correttezza si'
+        console.log("valore 1:" + valore1.value); //per prendere e stampare il valore, .style per lo stile invece
+
+        alert(valore1.value); //apre un pop-up
+
+        //somma = valore1.value + (valore2.value); //viene 53
+        somma = parseInt(valore1.value) + parseInt(valore2.value); //con il cast diventa 8
+
+        alert(somma);
+    });
+</script>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+FORM_CALCOLO:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form calcolo</title>
+</head>
+<body>
+    <form>
+        <label>Inserisci il primo valore: <input type="text" size="20" id="valore1"></label>
+        <label>Inserisci il secondo valore: <input type="text" size="20" id="valore2"></label>
+        <button id="calcola">Calcola</button> <!--submit invia, uso il button in sto caso che equivale al submit, ma non dobbiamo
+                                            mandare nulla nel web, voglio solo che il mio pc faccia un calcolo a livello client-->
+
+        </form>
+</body>
+</html>
+
+                                                <!--            JS              -->
+
+<script>
+    //1) recuperare gli elementi dal form
+    const valore1 = document.getElementById("valore1");
+    const valore2 = document.getElementById("valore2");
+    const bottone_calcolo = document.getElementById("calcola");
+    let somma = 0;
+
+    //quando si clicca il bottone si passa da HTML a JS
+    bottone_calcolo.addEventListener("click", function(e){ //e o event, ma si puo' anche non mettere, per correttezza si'
+        e.preventDefault(); //blocca prima del SUBMIT
+        console.log("valore 1:" + valore1.value); //per prendere e stampare il valore, .style per lo stile invece
+
+
+        if(valore1.value == ""){
+            valore1.style.backgroundColor = "red";
+            alert("non e' possibile fare il calcolo per assenza di valori"); //apre un pop-up
+
+        } else if(valore2.value == ""){
+            valore2.style.backgroundColor = "red";
+            alert("non e' possibile fare il calcolo per assenza di valori"); //apre un pop-up
+            
+            }else{
+                //somma = valore1.value + (valore2.value); //viene 53
+                somma = parseInt(valore1.value) + parseInt(valore2.value); //con il cast diventa 8
+
+                alert(somma);
+                valore1.style.backgroundColor = "green";
+                valore2.style.backgroundColor = "green";
+        }
+    });
+</script>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+FORM_PERSONE:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form calcolo</title>
+</head>
+<body>
+    <form>
+        <p><label>Nome: <input type="text" size="20" id="fuser1"></label>
+        <label>Anni: <input type="text" size="20" id="fage1"></label></p>
+        <p><label>Nome: <input type="text" size="20" id="fuser2"></label>
+        <label>Anni: <input type="text" size="20" id="fage2"></label> </p>
+        <button id="oldest">Piu' vecchio</button> <!--submit invia, uso il button in sto caso che equivale al submit, ma non dobbiamo
+                                            mandare nulla nel web, voglio solo che il mio pc faccia un calcolo a livello client-->
+        </form>
+</body>
+</html>
+
+<script>
+    const nome1 = document.getElementById("fuser1");
+    const nome2 = document.getElementById("fuser2");
+    const anni1 = document.getElementById("fage1");
+    const anni2 = document.getElementById("fage2");
+
+    const bottone_oldest = document.getElementById("oldest");
+
+    //quando si clicca il bottone si passa da HTML a JS
+    bottone_oldest.addEventListener("click", function(e){ //e o event, ma si puo' anche non mettere, per correttezza si'
+        e.preventDefault(); //blocca prima del SUBMIT
+
+        console.log("Il primo nome e' " + nome1.value); //per prendere e stampare il valore, .style per lo stile invece
+        console.log("Il secondo nome e' " + nome2.value); //per prendere e stampare il valore, .style per lo stile invece
+
+        if(anni1.value > anni2.value){
+            nome1.style.backgroundColor = "blue";
+            nome2.style.backgroundColor = "white";
+            console.log("Il piu' vecchio e' " + nome1.value); //per prendere e stampare il valore, .style per lo stile invece
+            alert("Il piu' vecchio e' " + nome1.value);
+            
+        }else if(anni1.value == anni2.value){
+            nome1.style.backgroundColor = "white";
+            nome2.style.backgroundColor = "white";
+            alert(nome1.value + " e " + nome2.value + " hanno la stessa eta'");
+            console.log("Hanno la stessa eta'");
+
+        } else{
+            nome2.style.backgroundColor = "blue";
+            nome1.style.backgroundColor = "white";
+            console.log("Il piu' vecchio e' " + nome2.value); //per prendere e stampare il valore, .style per lo stile invece
+            alert("Il piu' vecchio e' " + nome2.value);
+            
+        }
+    });
+
+</script>
+
+////////////////////

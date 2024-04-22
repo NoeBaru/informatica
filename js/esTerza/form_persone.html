@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form calcolo</title>
+</head>
+<body>
+    <form>
+        <p><label>Nome: <input type="text" size="20" id="fuser1"></label>
+        <label>Anni: <input type="text" size="20" id="fage1"></label></p>
+        <p><label>Nome: <input type="text" size="20" id="fuser2"></label>
+        <label>Anni: <input type="text" size="20" id="fage2"></label> </p>
+        <button id="oldest">Piu' vecchio</button> <!--submit invia, uso il button in sto caso che equivale al submit, ma non dobbiamo
+                                            mandare nulla nel web, voglio solo che il mio pc faccia un calcolo a livello client-->
+        </form>
+</body>
+</html>
+
+<script>
+    const nome1 = document.getElementById("fuser1");
+    const nome2 = document.getElementById("fuser2");
+    const anni1 = document.getElementById("fage1");
+    const anni2 = document.getElementById("fage2");
+
+    const bottone_oldest = document.getElementById("oldest");
+
+    //quando si clicca il bottone si passa da HTML a JS
+    bottone_oldest.addEventListener("click", function(e){ //e o event, ma si puo' anche non mettere, per correttezza si'
+        e.preventDefault(); //blocca prima del SUBMIT
+
+        console.log("Il primo nome e' " + nome1.value); //per prendere e stampare il valore, .style per lo stile invece
+        console.log("Il secondo nome e' " + nome2.value); //per prendere e stampare il valore, .style per lo stile invece
+
+        if(anni1.value > anni2.value){
+            nome1.style.backgroundColor = "blue";
+            nome2.style.backgroundColor = "white";
+            console.log("Il piu' vecchio e' " + nome1.value); //per prendere e stampare il valore, .style per lo stile invece
+            alert("Il piu' vecchio e' " + nome1.value);
+            
+        }else if(anni1.value == anni2.value){
+            nome1.style.backgroundColor = "white";
+            nome2.style.backgroundColor = "white";
+            alert(nome1.value + " e " + nome2.value + " hanno la stessa eta'");
+            console.log("Hanno la stessa eta'");
+
+        } else{
+            nome2.style.backgroundColor = "blue";
+            nome1.style.backgroundColor = "white";
+            console.log("Il piu' vecchio e' " + nome2.value); //per prendere e stampare il valore, .style per lo stile invece
+            alert("Il piu' vecchio e' " + nome2.value);
+            
+        }
+    });
+
+</script>

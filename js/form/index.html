@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="FORM">
+        <p><h1>Anagrafe</h1></p>
+    <form>
+        <label for="fname">Nome:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lsurname">Cognome:</label><br>
+        <input type="text" id="lname" name="lsurname"><br>
+        <label for="faddres">Indirizzo:</label><br>
+        <input type="text" id="fname" name="faddres"><br>
+        <label for="leta">Eta':</label><br>
+        <input type="text" id="lname" name="leta"><br>
+        <label for="fcdf">Codice fiscale:</label><br>
+        <input type="text" id="fname" name="fcdf"><br>
+        <label for="lsex">Sesso:</label><br>
+        <input type="text" id="lname" name="lsex">
+    </form>
+    </div>
+    <div id="FORM">
+        <p><h1>Contatti</h1></p>
+        <form>
+            <label for="fname">Cellulare:</label><br>
+            <input type="text" id="fname" name="fname"><br>
+            <label for="lname">Email:</label><br>
+            <input type="text" id="lname" name="lname">
+        </form>
+    </div>
+    <div id="FORM">
+        <p><h1>Presa visione</h1></p>
+        <input type = "checkbox">
+    </div>
+
+    
+</body>
+</html>
+<!--DOM(DOMDocumentObjectModel)-->
+<script>
+    const invio = document.getElementById("fsubmit");
+
+    invio.addEventListener("click", function(e){
+        e.preventDefault(); // Blocca prima del SUBMIT
+
+        const etaInput = document.getElementById("leta"); // Ottieni l'input dell'età
+        const eta = parseInt(etaInput.value); // Converti l'età in un numero intero
+
+        const dinamico = document.getElementById("dinamico");
+        const paragrafo = document.createElement('p');
+
+        if (eta >= 18) {
+            paragrafo.textContent = 'L\'utente è maggiorenne';
+        } else {
+            paragrafo.textContent = 'L\'utente non è maggiorenne';
+        }
+
+        dinamico.appendChild(paragrafo);
+        dinamico.style.color = 'blue';  
+    });
+</script>
