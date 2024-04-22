@@ -3,9 +3,10 @@ package serializzazioneJSON;
 import originali.Libreria;
 
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class LibreriaJSON extends Libreria {
-    public LibreriaJSON() {
+    public LibreriaJSON() {super();
     }
 
     public void salvaSuFile(String nomeFile) throws IOException {
