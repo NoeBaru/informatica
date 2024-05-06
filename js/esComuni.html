@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Inserisci Comune</h1>
+    <form>
+        <label id="nome_comune"> Comune: <input type="text" id="comune" name="comune"><br> </label>
+    </form>
+    <input type="submit" id="controlla" value="controlla">
+
+    <div id="messaggi"></div>
+
+
+</body>
+
+</html>
+<script>
+    /*********
+     utilizzo il webserver di VSC 
+     **********/
+
+    const nome = document.getElementById("comune");
+    let url = "./comuniGITHUB.json" //url che punta al json... può essere anche un url sul web
+    let cont = 0
+    let abitantiTot = 0
+    let abitantiMax = 0
+    let cittaMax = "no comuni"
+    let messaggio = ""
+
+    const verificaButton = document.getElementById("controlla");
+    verificaButton.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        if (comune == "") {
+            alert("inserisci comune")
+        }
+        else {
+            let messaggi = document.getElementById("messaggi");
+            fetch(url)
+                .then(response => response.json()) //richiamo la funzione json
+                .then(dati => {
+                    const datiJson = dati
+                    console.log(datiJson) //stampo l'oggetto creato dall'importazione del json
+                    let div_mess = document.createElement('div');
+                    datiJson.forEach(riga => {
+                        if (riga.nome == comune.value) {
+                            console.log("--", riga.nome)
+                            div_mess.innerHTML = '<p>nome:</p>' + riga.nome + '<p> regione:</p>' + riga.regione
+                        }
+                        
+                        messaggi.appendChild(div_mess);
+                    });
+                })
+            /*
+            datiJson.forEach(riga => {
+                if (riga.provincia.nome == "Cuneo") {
+                    console.log("--", riga.nome)
+                    cont++
+                    abitantiTot = abitantiTot + riga.popolazione
+                    if (riga.popolazione > abitantiMax) {
+                        abitantiMax = riga.popolazione
+                        cittaMax = riga.nome
+                    }
+                }
+            });
+            console.log("sono " + cont + " comuni")
+            console.log("abitanti totali " + abitantiTot)
+            console.log("citta max: " + cittaMax + " con " + abitantiMax + " abitanti")
+
+            console.log("regione nome = " + datiJson.regione_nome)
+
+            datiJson.provincia.forEach(element =>{ //scorro l'array di oggetti presente in provincia
+                console.log("--", element.provincia_nome)
+
+                if (element.comuni.length > 0){
+                    element.comuni.forEach(dati_comune =>{ //scorro l'array di oggetti presente in comuni
+                        console.log("---- " + dati_comune.comune_nome + " " + dati_comune.cap)
+
+                        createOptionProvincia(element.provincia_nome + " " + dati_comune.comune_nome + " " + dati_comune.cap)
+                    })      
+                }
+            }) */
+        }
+
+
+        /*********************************
+            Sintassi per scorrere una lista di oggetti
+            Si usa Object.keys
+
+            Object.keys(datiJson.provincia).forEach(key => {
+                console.log(key)
+            })
+        *********************************/
+    });
+</script>
