@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>    <title>La coda di callback</title></head>
+<body></body>
+<script>
+//da eseguire in visualizzazione sviluppo
+//callback queue o task queue
+  console.log("callback queue o task queue");
+
+    function f1() { 
+        debugger;
+        console.log('f1'); 
+    }
+
+    function f2() { 
+        debugger;
+        console.log('f2');
+    }
+
+    function f3() { 
+        debugger;
+        console.log('f3');
+    }
+
+    function main() {
+        debugger;
+        console.log('main');
+        setTimeout(f1, 0);  //funzione asincrona entra per prima in coda
+        setTimeout(f3, 0);  //funzione asincrona entra per ultima
+        f2();
+    
+    }
+    
+    main();
+</script>

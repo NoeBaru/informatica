@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cocktail</title>
 </head>
 <body>
     <h1>Inserisci Cocktail</h1>
@@ -15,7 +15,7 @@
     <div id="messaggi"></div>
     <body>
 
-        <select id="select_provincia" name="select_provincia">
+        <select id="select_cocktail" name="select_cocktail">
            <!-- <option value="Torino">Torino</option>-->
         </select>
     
@@ -27,8 +27,8 @@
              utilizzo il webserver di VSC 
              **********/
     
-            let url = "./comuni.json" //url che punta al json... può essere anche un url sul web
-            let select_provincia = document.getElementById("select_provincia")
+            let url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita" //url che punta al json... può essere anche un url sul web
+            let select_cocktail = document.getElementById("select_cocktail")
     
     
             fetch(url)
@@ -37,10 +37,10 @@
                     const datiJson = dati
                     console.log(datiJson) //stampo l'oggetto creato dall'importazione del json
                     
-                    console.log("regione nome = " + datiJson.regione_nome)
+                    console.log("cocktail nome = " + datiJson.strDrink)
     
                     datiJson.provincia.forEach(element =>{ //scorro l'array di oggetti presente in provincia
-                        console.log("--", element.provincia_nome)
+                        console.log("--", element.strDrink)
     
                         if (element.comuni.length > 0){
                             element.comuni.forEach(dati_comune =>{ //scorro l'array di oggetti presente in comuni

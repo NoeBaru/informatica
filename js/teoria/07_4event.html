@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Gestione eventi</title>
+</head>
+
+<body>
+    <a href="#" target="_blank" onclick="return confirm('Confermi?')" id="link">apri finestra</a>
+    <!--"#" indica di posizionarsi ad inizio pagina, target="_blank" indica in un'atra finestra
+        se nomeFunz() restituisce false, non verrà eseguita-->
+    <div id ="demo1"></div>
+    <div id ="demo2"></div>
+</body>
+<script>
+    //addEventListener
+    document.addEventListener("click", myFunction);
+    function myFunction() { 
+        document.getElementById("link").innerText = "Hello World"; 
+    } 
+
+    //con una funzione anonima(si deve fare così se ci sono dei parametri)
+    let s = "Hello!"
+    document.addEventListener("click", function () { 
+        document.getElementById("demo1").innerText = s; 
+    });
+    //con funzione freccia
+    document.onclick = () => document.getElementById("demo2").innerText = s;
+   
+</script>

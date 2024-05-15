@@ -1,0 +1,59 @@
+<script>
+  /* null   (vuoto, sconosciuto e NON puntatore nullo)
+undefined(valore e quindi tipo non assegnato)
+NaN (Not a Number) 
+*/
+x = 10/"a"
+  if (x)
+  console.log(12)
+else
+console.log(x)
+console.log("" ==  false)
+console.log(0 ==  false)
+console.log(x ==  false)
+console.log(typeof 42);
+console.log(typeof '42');
+console.log(typeof true);
+console.log(typeof undefined);
+console.log(typeof null);
+console.log(typeof { prova: 42 });
+console.log(typeof [1, 2, 3, 4]);
+
+console.log(
+  typeof function prova() {
+    console.log('prova');
+  }
+);
+
+console.log(typeof new Date());
+
+
+
+//OPERATORE POLIMORFO
+console.log("" + 1 + 0)     // = "10" 
+console.log("" - 1 + 0)     // = -1 
+console.log(true + false)   // = 1 
+console.log(6 / "3")        // = 2 
+console.log("2" * "3")      // = 6 
+console.log(4 + 5 + "px")   // = "9px" 
+console.log("$" + 4 + 5)    // = "$45" 
+console.log("4" - 2)        // = 2 
+console.log("4px" - 2)      // = NaN 
+console.log(7 / 0)          // = Infinity 
+console.log(" -9 " + 5)     // = " -9 5" 
+console.log(" -9 " - 5)     // = -14 
+console.log(null + 1 )      //= 1 
+console.log(undefined + 1)  // = NaN 
+
+//CONFRONTI
+console.log("CONFRONTI")
+console.log(null == undefined)  //true
+console.log(null === undefined) //false
+console.log(NaN == undefined)		//false
+console.log(isNaN(undefined))		//true 
+console.log(isNaN(null))		    //false 
+console.log(NaN == null)		    //false
+console.log(NaN === undefined)	//false
+console.log(NaN === null)	      //false
+
+</script>

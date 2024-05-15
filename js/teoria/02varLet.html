@@ -1,0 +1,48 @@
+<script>
+ //"use strict";  //deve essere la prima istruzione dello script
+  
+ //hoisting; dichiarazione "sollevata" all'inizio del codice
+  yy = 5
+  var yy
+  console.log(yy)
+ 
+  console.log(saluto); //undefined
+  var saluto = "say hello" 
+
+  /*
+  console.log (salut); //devo cambiare nome se no è una ridefinizione
+  let salut = "say hello" //ReferenceError: can't access lexical declaration 'greet' before initialization
+  */
+
+ //let e var
+ let a
+ console.log('a=' + a) //undefined
+
+ function varTest() {
+    var d = 31;
+    y = 5; //creata globale se senza use strict, se no errore
+    if (true) {
+      var d = 71;  // same variable!
+      var f = 10; //visibilità a livello di funzione
+      console.log("var inner " + d);  // 71
+    }
+    console.log("var " + d);  // 71
+    console.log(f);
+  }
+
+  function letTest() {
+    let c = 32;
+    y++;
+    if (true) {
+      let c = 72;  // different variable
+      let f = 10; //visibilità a ivello di blocco
+      console.log("let inner " + c);  // 72
+    }
+    console.log("let " + c);  // 32
+    //console.log(f); //non visibile fuori dal blocco
+  }
+
+  varTest()
+  letTest()
+  console.log(y)
+</script>

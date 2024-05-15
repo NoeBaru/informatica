@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise con codice sincrono</title>
+</head>
+<body></body>
+
+</html>
+<script>
+    //promise
+    let myPromise = new Promise((resolve, reject) => {
+        let randomNumber = Math.floor(Math.random() * 2);
+        if (randomNumber === 1) {
+            //nelle () il risultato restituito
+            resolve('risolta! ' + randomNumber);
+        } else { //nelle () il risultato restituito
+            reject(new Error('rigettata! ' + randomNumber));
+        }
+    });
+
+    //esecuzione
+    myPromise.then((res) => {//res è il risultato della resolve
+        console.log('La Promise è: ' + res);
+    }).catch((err) => {//err è il risultato della reject
+        console.log('La Promise è: ' + err.message);
+    }).finally(() => { console.log('fine'); } //eseguita in ogni caso
+    );
+
+</script>

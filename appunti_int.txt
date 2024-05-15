@@ -1,0 +1,23 @@
+cos'è JS, alcune regole, i tipi, esrcizietti (es slide 50 "javascript_MODERNO"), regex, jason
+per studio guarda appunti, slide "javascript_MODERNO 1 e 2" e gli esercizi 01-05.html
+
+const per costanti, funzioni e 
+
+prompt fa apparire il parametro sceglibile
+es.let age = prompt("WHat's your age?", 18)
+
+let welcome = (age
+
+x=(x>y)?4:5; cioè la condizione, il vaore V e il valore F (se x è maggiore allora varrà 4, altrimenti 5)   (vedi slide n.)
+
+regex:
+[abc] posso prendere uno di questi elementi, come se (a|b|c)
+[abc]+ : almeno uno
+[A-Z] unan sola lettera maiuscola
+[A-Z] {3} tre maiuscole
+[A-Z] {3,} almeno 3
+[A-Z] {0,3} da zero a 3 
+
+(slide n.297, 300-301, 337-341, 369)
+
+usiamo .then perché la fetch è una promise

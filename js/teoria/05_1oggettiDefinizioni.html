@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gli oggetti in JavaScript</title>
+</head>
+<body>
+</body>
+</html>
+<script type="text/javascript">
+//notazione letterale. chiave: valore
+	var persona = {
+		"nome" : "Mario", 
+		cognome : "Rossi",
+		visualizza : function(){			
+			return this.nome + " " + this.cognome
+		}
+	}
+	
+persona.nome = "Luca";
+persona["cognome"] = "Rosso"
+console.log(typeof persona + "\n" + persona.visualizza()) //object /n Mario Rossi
+
+console.log(">>Funzione costruttore")
+//funzione costruttore: funzione invocata con new
+//tipeof di Persona resta function	
+	function Persona (n,c){
+		this.nome = (n || "Mario");	//this rende pubblico l'attributo/metodo
+		this.cognome = (c || "Rossi");	
+		let eta = 19;	//attributo privato
+		this.visualizza = function(){ //un metodo è una funzione assegnata ad una proprietà con il this se no è una funzione
+			return this.nome + " " + this.cognome + " " + eta};
+	}
+
+let pers1 = new Persona(null,"Molinari") //come creare una classe
+/*se nella creazione dell'oggetto omettiamo new, 
+quello che otterremo non sarà la creazione di un oggetto 
+ma l’esecuzione della funzione, con risultati imprevedibili.
+pers1 è  undefined
+*/
+
+pers1.altezza = 180;	//aggiunto un'altro attributo eta, solo per pers1
+console.log(typeof pers1 + "\n" + typeof Persona + "\n" +
+		pers1.visualizza())
+console.log(pers1.altezza)
+
+console.log(">>for in")
+//scorre tutti i metodi e attributi pubblici
+for (campo in pers1){
+	console.log(campo + " : " + pers1[campo])	//NON si può fare pers1.campo
+}
+
+delete pers1.eta	//rimuove la proprietà
+for (campo in pers1){
+	console.log(campo + " : " + pers1[campo])	//NON si può fare pers1.campo
+}
+
+console.log(">>>Prototype")
+Persona.prototype.indirizzo = "Via Roma 1"
+for (campo in pers1){
+	console.log(campo + " : " + pers1[campo])	//NON si può fare pers1.campo
+}
+
+console.log(">>>altra persona")
+let pers2 = new Persona() //no valori, quindi quelli di default Mario Rossi, 19 anni e di Via Roma 1
+for (campo in pers2){
+	console.log(campo + " : " + pers2[campo])	//non ha altezza ma indirizzo
+}
+
+//array di oggetti
+let T = new Array();
+
+//caricamento vettore
+T.push({prd:'vite', prx:2});
+T.push({prd:'dado', prx:1});
+T.push({prd:'ruota', prx:5});
+
+s = ''
+for(let i in T) //sul vettore restituisce l'indice
+	s += T[i].prd + ' ' + T[i].prx + '\n';
+console.log(s)
+
+function pro(x,y) {
+	this.prd = x;	
+	this.prx = y; 
+  	this.print = function() {
+    	return this.prd + ' ' + this.prx  
+	};
+}
+
+T = []
+//caricamento vettore
+T.push(new pro('vite',2));
+T.push(new pro('dado',1));
+T.push(new pro('ruota',5));
+
+s=''
+for(let el of T) //restituisce gli elementi dell'
+	s+= el.print() + '\n'
+console.log(s)
+</script>

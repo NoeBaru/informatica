@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise coda di esecuzione</title>
+</head>
+
+<body>
+    <script>
+
+        debugger;
+        function f1() {
+            console.log('f1');
+        }
+        function f2() {
+            console.log('f2');
+        }
+
+        function main() {
+            console.log('main');
+            setTimeout(f1, 0);
+            new Promise((resolve, reject) =>
+                resolve('I am a promise')
+            ).then(res => console.log(res))
+            f2();
+        }
+        
+        main();
+
+
+    </script>

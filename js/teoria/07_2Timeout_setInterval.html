@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>    <title>SetTimeout e setInterval</title> </head>
+<body> </body>
+<script>
+//la funzione sayHello è eseguita dopo 2 sec
+setTimeout(sayHello, 2000);
+
+function sayHello() {
+  console.log("Ciao!");
+}
+
+//la funzione updateCounter viene eseguita ogni secondo
+let counter = 0;
+
+let intervalID = setInterval(updateCounter, 1000);
+
+function updateCounter() {
+  console.log(counter);
+  counter++;
+  
+  if (counter === 10) {
+    clearInterval(intervalID); // Interrompe l'intervallo dopo 10 iterazioni
+  }
+}
+
+</script>

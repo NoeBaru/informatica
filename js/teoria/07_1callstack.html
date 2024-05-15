@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>  <title>La call stack</title></head>
+<body></body>
+<script>
+  //da eseguire in visualizzazione sviluppo
+
+  console.log("function execution stack o Call Stack");
+  function prima() {
+    debugger;
+    console.log('prima');
+  }
+  
+  function seconda() {
+    debugger;
+    prima();
+    console.log('seconda');
+  }
+  
+  function terza() {
+    debugger;
+    seconda();
+    console.log('terza');
+  }
+  
+  terza();
+  
+  </script>
+</html>
+

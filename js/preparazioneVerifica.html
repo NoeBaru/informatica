@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail</title>
+    <link rel="stylesheet" href="preparazioneVerifica.css">
+</head>
+<body>
+    <select id="select_provincia" name="select_provincia">
+        <!-- <option value="Torino">Torino</option>-->
+     </select>
+     <div class="card">
+        <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" alt="Avatar" style="width:100%">
+        <div class="container">
+          <h4><b>Margarita</b></h4>
+          <p>11007</p>
+        </div>
+      </div>
+    <script>
+        let url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita" //url che punta al json... può essere anche un url sul web
+            let select_cocktail = document.getElementById("select_cocktail")
+    
+    
+            fetch(url)
+                .then(response => response.json()) //richiamo la funzione json
+                .then(dati => {
+                    const datiJson = dati
+                    console.log(datiJson) //stampo l'oggetto creato dall'importazione del json
+
+                    datiJson.drinks.forEach(element =>{ //scorro l'array di oggetti presente in provincia
+                        console.log("--", element.strDrinkThumb)
+
+                        createOptionCocktail(element.strDrinkThumb)
+
+                    if (element.drinks.length > 0){
+                        element.drinks.forEach(element =>{ //scorro l'array di oggetti presente in comuni
+                            console.log("---- " + element.strDrinks + " " + element.idDrinks)
+                        })
+                            
+                    }
+
+                    })
+                })
+                function createOptionCocktail(valore){
+                select_cocktail.insertAdjacentHTML('beforeend','<option value="' + valore +'">'+ valore +'</option>')
+                /*<div class="card">
+                <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" alt="Avatar" style="width:100%">
+                <div class="container">
+                <h4><b>element.strDrinks</b></h4>
+                <p>element.idDrinks</p>
+                </div>*/
+                } 
+    </script>
+</body>
+</html>

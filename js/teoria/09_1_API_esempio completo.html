@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uso API WEB</title>
+</head>
+<body>
+
+    <select id="select_provincia" name="select_provincia">
+       <!-- <option value="Torino">Torino</option>-->
+    </select>
+
+        
+    <script>
+        /*********
+         utilizzo il webserver di VSC (apri con Live Server)
+         **********/
+
+        let url = "./../comuni.json" //url che punta al json... può essere anche un url sul web
+        let select_provincia = document.getElementById("select_provincia")
+
+
+        fetch(url)
+            .then(response => response.json()) //richiamo la funzione json
+            .then(dati => {
+                const datiJson = dati
+                console.log(datiJson) //stampo l'oggetto creato dall'importazione del json
+                
+                console.log("regione nome = " + datiJson.regione_nome)
+
+                datiJson.provincia.forEach(element =>{ //scorro l'array di oggetti presente in provincia
+                    console.log("--", element.provincia_nome)
+
+                    createOptionProvincia(element.provincia_nome)
+
+                    if (element.comuni.length > 0){
+                        element.comuni.forEach(dati_comune =>{ //scorro l'array di oggetti presente in comuni
+                            console.log("---- " + dati_comune.comune_nome + " " + dati_comune.cap)
+                        })
+                            
+                    }
+
+                }) 
+            })
+
+            function createOptionProvincia(valore){
+                select_provincia.insertAdjacentHTML('beforeend',
+                    '<option value="' + valore +'">'+ valore +'</option>')
+            }
+
+            select_provincia.addEventListener("change", function(e){
+                console.log(e.target.value) //stampa in console il valore selezionato
+            })
+
+         
+
+                /*********************************
+                Sintassi per scorrere una lista di oggetti
+                Si usa Object.keys
+
+                Object.keys(datiJson.provincia).forEach(key => {
+                    console.log(key)
+                })
+                *********************************/
+   </script>
+</body>
+</html>
