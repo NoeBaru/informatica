@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>baruffolo_Campionato_3</title>
+</head>
+<body>
+    <div id="informazione"></div>
+        <h1 id="title">CAMPIONATO: Serie A 2020/21</h1> <!--il titolo vuoto dove mettere dopo quello del campionato e l'anno -->
+        <button type="button" id="buttonG1">giornata1</button>
+        <button type="button" id="buttonG2">giornata2</button>
+    </div>
+    <script>
+        //per gli elementi del DOM
+        const button1 = document.getElementById("buttonG1")
+        const button2 = document.getElementById("buttonG2")
+        const informazione = document.getElementById("informazione")
+            
+        //inseirsce gli URL dei file JSON da cui recuperare i dati in una variabile
+        let urlCamp = "./campionato20_21.json";
+        let urlSquadre = "./squadre20_21.json";
+        
+        button1.addEventListener("click", function (e) {
+            e.preventDefault()
+
+            fetch(urlSquadre)
+                .then(response => response.json())
+                .then(dati => {
+                    const datiJson = dati; //salva i dati del JSON delle squadre
+                    console.log(datiJson); //stampa i dati JSON nella console
+                    informazione.innerHTML = ""; //pulisce il div dei risultati
+
+                    datiJson.matches.forEach(element => { //scorre l'array dei matches del file JSON del campionato
+                        //controlla se la squadra selezionata è nella giornata 1 e stampa i dati relativi
+                        if (element.round == "1^ Giornata") {
+                            console.log("1^giornata") //per controllare
+                            let informazione = document.createElement('div')
+                            informazione.innerHTML += "<div><h4>" + element.round + "</h4><p>" + element.team1 + " : " + element.score.ft[0] + "</p><p>" + element.team2 + " : " + element.score.ft[1] + "</p></div>";
+                            informazione.appendChild(informazione)
+                        }
+                    });
+                });
+        });
+        button2.addEventListener("click", function (e) {
+            e.preventDefault()
+            fetch(urlSquadre)
+                .then(response => response.json())
+                .then(dati => {
+                    const datiJson = dati; //salva i dati del JSON delle squadre
+                    console.log(datiJson); //stampa i dati JSON nella console
+                    informazione.innerHTML = ""; //pulisce il div dei risultati
+
+                    datiJson.matches.forEach(element => { //scorre l'array dei matches del file JSON del campionato
+                        //controlla se la squadra selezionata è nella giornata 2 e stampa i dati relativi
+                        if (element.round == "2^ Giornata") {
+                            console.log("2^giornata") //per controllare
+                            let informazione = document.createElement('div')
+                            informazione.innerHTML += "<div><h4>" + element.round + "</h4><p>" + element.team1 + " : " + element.score.ft[0] + "</p><p>" + element.team2 + " : " + element.score.ft[1] + "</p></div>";
+                            informazione.appendChild(informazione)
+                        }
+                    });
+                });
+        });
+    </script>
+</body>
+</html>

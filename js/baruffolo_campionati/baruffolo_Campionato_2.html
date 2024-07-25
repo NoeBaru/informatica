@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>baruffolo_Campionato_2</title>
+</head>
+<body>
+    <h1 id="title"></h1> <!--creo il titolo vuoto da riempire dopo dinamicamente-->
+    <select name="squadra" id="selezionataSquadra"> <!--creo la select vuota da popolare dopo dinamicamente-->
+        <option value=""></option>
+    </select>
+    <div id = "risposta"></div>
+    <script>
+        //per gli elementi del DOM
+        let title = document.getElementById("title");
+        let selezione = document.getElementById("selezionataSquadra");
+
+        //inserisce gli URL dei file JSON da cui recuperare i dati in una variabile
+        let urlCamp = "./campionato20_21.json"
+        let urlSquadre = "./squadre20_21.json"
+        fetch(urlSquadre)
+            .then(response => response.json()) //richiamo la funzione json
+            .then(dati => {
+                const datiJson = dati
+                title.innerHTML = "CAMPIONATO: "+ datiJson.name; //stampo dinamicamente il titolo
+                datiJson.clubs.forEach(element => { //scorro l'array dei clubs nel file JSON delle squadre
+                    selezione.innerHTML += "<option value='"+ element.name + "'>"+element.name + "</option>" //riempio la select
+                });
+            })
+        let risposta = document.getElementById("risposta")
+
+        selezione.addEventListener('change', function(e){ //per evitare di mettere un button uso change per prendere il cambiamento della slect
+            const selectedValue = event.target.value; //salvo nell'event quello che schiaccio.
+            fetch(urlCamp)
+                .then(response => response.json()) //richiamo la funzione json
+                .then(dati => {
+                    let goalFatti = 0;
+                    let goalSubiti = 0;
+                    let punti = 0;
+                    const datiJson = dati
+
+                    risposta.innerHTML = "" //pulisce il div dei risultati
+                    datiJson.matches.forEach(element => { //scorre l'array dei matches del file JSON del campionato 
+                        if(element.team1 == selectedValue ){ 
+                            risposta.innerHTML += "<div><h4>"+element.round+"</h4><p>"+element.team1 +" : "+ element.score.ft[0]+"</p><p>"+element.team2 +" : "+ element.score.ft[1]+"</p></div>"
+                            goalFatti += element.score.ft[0]
+                            goalSubiti += element.score.ft[1]
+                            if(element.score.ft[0]==element.score.ft[1]) //se pareggio
+                                punti += 1;
+                            else if(element.score.ft[0]>element.score.ft[1]) //se vittoria
+                                punti += 3
+                        }else if(element.team2 == selectedValue){
+                            risposta.innerHTML += "<div><h4>"+element.round+"</h4><p>"+element.team1 +" : "+ element.score.ft[0]+"</p><p>"+element.team2 +" : "+ element.score.ft[1]+"</p></div>"
+                            goalFatti += element.score.ft[1]
+                            goalSubiti += element.score.ft[0]
+                            if(element.score.ft[0]==element.score.ft[1]) //se pareggio
+                                punti += 1;
+                            else if(element.score.ft[0]<element.score.ft[1]) //se vittoria
+                                punti += 3
+                        }
+                    })
+                    risposta.innerHTML += "<br><p>Goal fatti: "+ goalFatti+"</p>" + "<p>Goal subiti: "+ goalSubiti+"</p>" + "<p>punti: "+ punti+"</p>" //stampa i risultati dei goal totali fatti e subiti e il punteggio
+                    console.log("goal fatti: " + goalFatti + " goal subiti: " + goalSubiti + " pt: " + punti) //stampa nella console i risultati delle partite (per controllare)
+                })  
+        })
+    </script>
+</body>
+</html>
+</body>
+</html>

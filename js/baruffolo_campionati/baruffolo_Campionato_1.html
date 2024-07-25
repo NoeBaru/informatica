@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>baruffolo_Campionato_1</title>
+</head>
+<body>
+    <h1 id="title"></h1> <!--il titolo vuoto dove mettere dopo quello del campionato e l'anno -->
+    <select name="squadra" id="selectSquadra"> <!--creo la select vuota-->
+        <option value=""></option> <!-- è vuota perché devo andare a riempirla dinamicamente dopo -->
+    <script>
+        //per gli elementi del DOM
+        let title = document.getElementById("title");
+        let selezione = document.getElementById("selectSquadra");
+            
+        //inseirsce gli URL dei file JSON da cui recuperare i dati in una variabile
+        let urlCamp = "./campionato20_21.json";
+        let urlSquadre = "./squadre20_21.json";
+        
+        fetch(urlSquadre)
+            .then(response => response.json())
+            .then(dati => {
+                const datiJson = dati; //salva i dati del JSON 
+                console.log(datiJson); //stampa i dati JSON nella console
+
+                title.innerHTML = "CAMPIONATO: " + datiJson.name; //scrive il titolo del campionato + l'anno, cioè il nome del campionato
+                datiJson.clubs.forEach(element => { //scorro l'array dei club del file JSON delle squadre
+                    console.log(element); //stampa a console i dettagli del club nella console (per controllare)
+                    selezione.innerHTML += "<option value=" + element.code + ">" + element.name + "</option>"; //aggiunge le opzioni della select contenenti le varie squadre alla select inziale vuota
+                });
+            });
+    </script>
+</body>
+</html>
