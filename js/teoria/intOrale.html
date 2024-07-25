@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form>
+        <label>Inserisci il nome: <input type="text" size="20" id="nome"></label><br>
+        <label>Inserisci il cognome: <input type="text" size="20" id="cognome"></label><br>
+        <label>Inserisci il numero di telefono: <input type="number" size="20" id="numero"></label><br>
+        <button id="invia">Invia</button> 
+        </form>
+    <script>
+        const nome = document.getElementById("nome");
+        const cognome = document.getElementById("cognome");
+        const numero = document.getElementById("numero");
+
+        bottone_invio.addEventListener("click", function(e){
+        e.preventDefault();
+
+        function miPresento(nome, cognome, numero){
+            return console.log
+        }
+
+        if("^([A-Z])+[a-z]+".test(nome.value)){
+            if("^([A-Z])+[a-z]+".test(cognome.value)){
+                if("^(\d[0-9]{1,4})+(\d[0-9]{6})".test(numero.value)){
+                    function Persona (nome, cognome, numero){
+		                this.nome = nome;
+		                this.cognome = cognome;
+		                let numero = numero;
+		                this.miPresento = function(){
+			                return "output: Sono " + nome + cognome + "cell: " + numero;
+                        };
+	                }
+                    persona(nome.value, cognome.value, numero.value);
+                } else{
+                    alert("il numero inserito non è valido"); //apre un pop-up
+                }
+            }else{
+                alert("il cognome inserito non è valido"); //apre un pop-up
+            
+            }
+        } else{
+            alert("il nome inserito non è valido"); //apre un pop-up
+        }        
+        });
+
+    </script>
+</body>
+</html>
+
+<!--
+    JSON
+    persone = [
+        {
+            "nome" : nome
+            "cognome" : cognome
+            "numero" : numero
+        };    
+    ];
+-->

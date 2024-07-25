@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cognome_Campionato_1</title>
+</head>
+<body>
+    <h1 id="title"></h1>
+    <select name="squadra" id="selSquad">
+        <option value=""></option>
+    </select>
+    
+    <script>
+        let title = document.getElementById("title");
+        let selezione = document.getElementById("selSquad");
+        let url = "./campionato20_21.json"
+        let url2 = "./squadre20_21.json"
+        fetch(url2)
+            .then(response => response.json()) //richiamo la funzione json
+            .then(dati => {
+                const datiJson = dati
+                console.log(datiJson)
+
+                title.innerHTML = "CAMPIONATO: "+datiJson.name;
+                datiJson.clubs.forEach(element => {
+                    console.log(element)
+                    console.log("<option value="+element.code+">"+element.name+"</option>")
+                    selezione.innerHTML += "<option value="+element.code+">"+element.name+"</option>"
+                });
+            })
+    </script>
+</body>
+</html>

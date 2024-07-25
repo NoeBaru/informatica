@@ -1,0 +1,848 @@
+{
+    "name": "Serie A 2020/21",
+    "matches": [
+      {
+        "round": "1^ Giornata",
+        "date": "2020-09-19",
+        "team1": "ACF Fiorentina",
+        "team2": "Torino FC",
+        "score": {
+          "ft": [
+            1,
+            0
+          ]
+        }
+      },
+      {
+        "round": "1^ Giornata",
+        "date": "2020-09-19",
+        "team1": "Hellas Verona",
+        "team2": "AS Roma",
+        "score": {
+          "ft": [
+            3,
+            0
+          ]
+        },
+        "status": "AWARDED"
+      },
+      {
+        "round": "1^ Giornata",
+        "date": "2020-09-20",
+        "team1": "Parma",
+        "team2": "SSC Napoli",
+        "score": {
+          "ft": [
+            0,
+            2
+          ]
+        }
+      },
+      {
+        "round": "1^ Giornata",
+        "date": "2020-09-20",
+        "team1": "Genoa CFC",
+        "team2": "FC Crotone",
+        "score": {
+          "ft": [
+            4,
+            1
+          ]
+        }
+      },
+      {
+        "round": "1^ Giornata",
+        "date": "2020-09-20",
+        "team1": "US Sassuolo Calcio",
+        "team2": "Cagliari Calcio",
+        "score": {
+          "ft": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "round": "1^ Giornata",
+        "date": "2020-09-20",
+        "team1": "Juventus",
+        "team2": "UC Sampdoria",
+        "score": {
+          "ft": [
+            3,
+            0
+          ]
+        }
+      },
+      {
+        "round": "1^ Giornata",
+        "date": "2020-09-21",
+        "team1": "AC Milan",
+        "team2": "Bologna FC",
+        "score": {
+          "ft": [
+            2,
+            0
+          ]
+        }
+      },
+      {
+        "round": "2^ Giornata",
+        "date": "2020-09-26",
+        "team1": "Torino FC",
+        "team2": "Atalanta Bergamo",
+        "score": {
+          "ft": [
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "round": "2^ Giornata",
+        "date": "2020-09-26",
+        "team1": "Cagliari Calcio",
+        "team2": "SS Lazio",
+        "score": {
+          "ft": [
+            0,
+            2
+          ]
+        }
+      },
+      {
+        "round": "2^ Giornata",
+        "date": "2020-09-26",
+        "team1": "UC Sampdoria",
+        "team2": "Benevento",
+        "score": {
+          "ft": [
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "round": "2^ Giornata",
+        "date": "2020-09-26",
+        "team1": "FC Internazionale Milano",
+        "team2": "ACF Fiorentina",
+        "score": {
+          "ft": [
+            4,
+            3
+          ]
+        }
+      },
+      {
+        "round": "2^ Giornata",
+        "date": "2020-09-27",
+        "team1": "Spezia",
+        "team2": "US Sassuolo Calcio",
+        "score": {
+          "ft": [
+            1,
+            4
+          ]
+        }
+      },
+      {
+        "round": "2^ Giornata",
+        "date": "2020-09-27",
+        "team1": "Hellas Verona",
+        "team2": "Udinese Calcio",
+        "score": {
+          "ft": [
+            1,
+            0
+          ]
+        }
+      },
+      {
+        "round": "2^ Giornata",
+        "date": "2020-09-27",
+        "team1": "FC Crotone",
+        "team2": "AC Milan",
+        "score": {
+          "ft": [
+            0,
+            2
+          ]
+        }
+      },
+      {
+        "round": "2^ Giornata",
+        "date": "2020-09-27",
+        "team1": "SSC Napoli",
+        "team2": "Genoa CFC",
+        "score": {
+          "ft": [
+            6,
+            0
+          ]
+        }
+      },
+      {
+        "round": "2^ Giornata",
+        "date": "2020-09-27",
+        "team1": "AS Roma",
+        "team2": "Juventus",
+        "score": {
+          "ft": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "round": "2^ Giornata",
+        "date": "2020-09-28",
+        "team1": "Bologna FC",
+        "team2": "Parma",
+        "score": {
+          "ft": [
+            4,
+            1
+          ]
+        }
+      },
+      {
+        "round": "1^ Giornata",
+        "date": "2020-09-30",
+        "team1": "Benevento",
+        "team2": "FC Internazionale Milano",
+        "score": {
+          "ft": [
+            2,
+            5
+          ]
+        }
+      },
+      {
+        "round": "1^ Giornata",
+        "date": "2020-09-30",
+        "team1": "Udinese Calcio",
+        "team2": "Spezia",
+        "score": {
+          "ft": [
+            0,
+            2
+          ]
+        }
+      },
+      {
+        "round": "1^ Giornata",
+        "date": "2020-09-30",
+        "team1": "SS Lazio",
+        "team2": "Atalanta Bergamo",
+        "score": {
+          "ft": [
+            1,
+            4
+          ]
+        }
+      },
+      {
+        "round": "3^ Giornata",
+        "date": "2020-10-02",
+        "team1": "ACF Fiorentina",
+        "team2": "UC Sampdoria",
+        "score": {
+          "ft": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "round": "3^ Giornata",
+        "date": "2020-10-03",
+        "team1": "US Sassuolo Calcio",
+        "team2": "FC Crotone",
+        "score": {
+          "ft": [
+            4,
+            1
+          ]
+        }
+      },
+      {
+        "round": "3^ Giornata",
+        "date": "2020-10-03",
+        "team1": "Udinese Calcio",
+        "team2": "AS Roma",
+        "score": {
+          "ft": [
+            0,
+            1
+          ]
+        }
+      },
+      {
+        "round": "3^ Giornata",
+        "date": "2020-10-04",
+        "team1": "Juventus",
+        "team2": "SSC Napoli",
+        "score": {
+          "ft": [
+            3,
+            0
+          ]
+        },
+        "status": "AWARDED"
+      },
+      {
+        "round": "3^ Giornata",
+        "date": "2020-10-04",
+        "team1": "Atalanta Bergamo",
+        "team2": "Cagliari Calcio",
+        "score": {
+          "ft": [
+            5,
+            2
+          ]
+        }
+      },
+      {
+        "round": "3^ Giornata",
+        "date": "2020-10-04",
+        "team1": "Benevento",
+        "team2": "Bologna FC",
+        "score": {
+          "ft": [
+            1,
+            0
+          ]
+        }
+      },
+      {
+        "round": "3^ Giornata",
+        "date": "2020-10-04",
+        "team1": "SS Lazio",
+        "team2": "FC Internazionale Milano",
+        "score": {
+          "ft": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "round": "3^ Giornata",
+        "date": "2020-10-04",
+        "team1": "Parma",
+        "team2": "Hellas Verona",
+        "score": {
+          "ft": [
+            1,
+            0
+          ]
+        }
+      },
+      {
+        "round": "3^ Giornata",
+        "date": "2020-10-04",
+        "team1": "AC Milan",
+        "team2": "Spezia",
+        "score": {
+          "ft": [
+            3,
+            0
+          ]
+        }
+      },
+      {
+        "round": "4^ Giornata",
+        "date": "2020-10-17",
+        "team1": "SSC Napoli",
+        "team2": "Atalanta Bergamo",
+        "score": {
+          "ft": [
+            4,
+            1
+          ]
+        }
+      },
+      {
+        "round": "4^ Giornata",
+        "date": "2020-10-17",
+        "team1": "FC Internazionale Milano",
+        "team2": "AC Milan",
+        "score": {
+          "ft": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "round": "4^ Giornata",
+        "date": "2020-10-17",
+        "team1": "UC Sampdoria",
+        "team2": "SS Lazio",
+        "score": {
+          "ft": [
+            3,
+            0
+          ]
+        }
+      },
+      {
+        "round": "4^ Giornata",
+        "date": "2020-10-17",
+        "team1": "FC Crotone",
+        "team2": "Juventus",
+        "score": {
+          "ft": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "round": "4^ Giornata",
+        "date": "2020-10-18",
+        "team1": "Bologna FC",
+        "team2": "US Sassuolo Calcio",
+        "score": {
+          "ft": [
+            3,
+            4
+          ]
+        }
+      },
+      {
+        "round": "4^ Giornata",
+        "date": "2020-10-18",
+        "team1": "Spezia",
+        "team2": "ACF Fiorentina",
+        "score": {
+          "ft": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "round": "4^ Giornata",
+        "date": "2020-10-18",
+        "team1": "Torino FC",
+        "team2": "Cagliari Calcio",
+        "score": {
+          "ft": [
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "round": "4^ Giornata",
+        "date": "2020-10-18",
+        "team1": "Udinese Calcio",
+        "team2": "Parma",
+        "score": {
+          "ft": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "round": "4^ Giornata",
+        "date": "2020-10-18",
+        "team1": "AS Roma",
+        "team2": "Benevento",
+        "score": {
+          "ft": [
+            5,
+            2
+          ]
+        }
+      },
+      {
+        "round": "4^ Giornata",
+        "date": "2020-10-19",
+        "team1": "Hellas Verona",
+        "team2": "Genoa CFC",
+        "score": {
+          "ft": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "round": "5^ Giornata",
+        "date": "2020-10-23",
+        "team1": "US Sassuolo Calcio",
+        "team2": "Torino FC",
+        "score": {
+          "ft": [
+            3,
+            3
+          ]
+        }
+      },
+      {
+        "round": "5^ Giornata",
+        "date": "2020-10-24",
+        "team1": "Atalanta Bergamo",
+        "team2": "UC Sampdoria",
+        "score": {
+          "ft": [
+            1,
+            3
+          ]
+        }
+      },
+      {
+        "round": "5^ Giornata",
+        "date": "2020-10-24",
+        "team1": "Genoa CFC",
+        "team2": "FC Internazionale Milano",
+        "score": {
+          "ft": [
+            0,
+            2
+          ]
+        }
+      },
+      {
+        "round": "5^ Giornata",
+        "date": "2020-10-24",
+        "team1": "SS Lazio",
+        "team2": "Bologna FC",
+        "score": {
+          "ft": [
+            2,
+            1
+          ]
+        }
+      },
+      {
+        "round": "5^ Giornata",
+        "date": "2020-10-25",
+        "team1": "Cagliari Calcio",
+        "team2": "FC Crotone",
+        "score": {
+          "ft": [
+            4,
+            2
+          ]
+        }
+      },
+      {
+        "round": "5^ Giornata",
+        "date": "2020-10-25",
+        "team1": "Benevento",
+        "team2": "SSC Napoli",
+        "score": {
+          "ft": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "round": "5^ Giornata",
+        "date": "2020-10-25",
+        "team1": "Parma",
+        "team2": "Spezia",
+        "score": {
+          "ft": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "round": "5^ Giornata",
+        "date": "2020-10-25",
+        "team1": "ACF Fiorentina",
+        "team2": "Udinese Calcio",
+        "score": {
+          "ft": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "round": "5^ Giornata",
+        "date": "2020-10-25",
+        "team1": "Juventus",
+        "team2": "Hellas Verona",
+        "score": {
+          "ft": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "round": "5^ Giornata",
+        "date": "2020-10-26",
+        "team1": "AC Milan",
+        "team2": "AS Roma",
+        "score": {
+          "ft": [
+            3,
+            3
+          ]
+        }
+      },
+      {
+        "round": "6^ Giornata",
+        "date": "2020-10-31",
+        "team1": "FC Crotone",
+        "team2": "Atalanta Bergamo",
+        "score": {
+          "ft": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "round": "6^ Giornata",
+        "date": "2020-10-31",
+        "team1": "FC Internazionale Milano",
+        "team2": "Parma",
+        "score": {
+          "ft": [
+            2,
+            2
+          ]
+        }
+      },
+      {
+        "round": "6^ Giornata",
+        "date": "2020-10-31",
+        "team1": "Bologna FC",
+        "team2": "Cagliari Calcio",
+        "score": {
+          "ft": [
+            3,
+            2
+          ]
+        }
+      },
+      {
+        "round": "6^ Giornata",
+        "date": "2020-11-01",
+        "team1": "Udinese Calcio",
+        "team2": "AC Milan",
+        "score": {
+          "ft": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "round": "6^ Giornata",
+        "date": "2020-11-01",
+        "team1": "Spezia",
+        "team2": "Juventus",
+        "score": {
+          "ft": [
+            1,
+            4
+          ]
+        }
+      },
+      {
+        "round": "6^ Giornata",
+        "date": "2020-11-01",
+        "team1": "Torino FC",
+        "team2": "SS Lazio",
+        "score": {
+          "ft": [
+            3,
+            4
+          ]
+        }
+      },
+      {
+        "round": "6^ Giornata",
+        "date": "2020-11-01",
+        "team1": "SSC Napoli",
+        "team2": "US Sassuolo Calcio",
+        "score": {
+          "ft": [
+            0,
+            2
+          ]
+        }
+      },
+      {
+        "round": "6^ Giornata",
+        "date": "2020-11-01",
+        "team1": "AS Roma",
+        "team2": "ACF Fiorentina",
+        "score": {
+          "ft": [
+            2,
+            0
+          ]
+        }
+      },
+      {
+        "round": "6^ Giornata",
+        "date": "2020-11-01",
+        "team1": "UC Sampdoria",
+        "team2": "Genoa CFC",
+        "score": {
+          "ft": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "round": "6^ Giornata",
+        "date": "2020-11-02",
+        "team1": "Hellas Verona",
+        "team2": "Benevento",
+        "score": {
+          "ft": [
+            3,
+            1
+          ]
+        }
+      },
+      {
+        "round": "3^ Giornata",
+        "date": "2020-11-04",
+        "team1": "Genoa CFC",
+        "team2": "Torino FC",
+        "score": {
+          "ft": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "round": "7^ Giornata",
+        "date": "2020-11-06",
+        "team1": "US Sassuolo Calcio",
+        "team2": "Udinese Calcio",
+        "score": {
+          "ft": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "round": "7^ Giornata",
+        "date": "2020-11-07",
+        "team1": "Cagliari Calcio",
+        "team2": "UC Sampdoria",
+        "score": {
+          "ft": [
+            2,
+            0
+          ]
+        }
+      },
+      {
+        "round": "7^ Giornata",
+        "date": "2020-11-07",
+        "team1": "Benevento",
+        "team2": "Spezia",
+        "score": {
+          "ft": [
+            0,
+            3
+          ]
+        }
+      },
+      {
+        "round": "7^ Giornata",
+        "date": "2020-11-07",
+        "team1": "Parma",
+        "team2": "ACF Fiorentina",
+        "score": {
+          "ft": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "round": "7^ Giornata",
+        "date": "2020-11-08",
+        "team1": "SS Lazio",
+        "team2": "Juventus",
+        "score": {
+          "ft": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "round": "7^ Giornata",
+        "date": "2020-11-08",
+        "team1": "Atalanta Bergamo",
+        "team2": "FC Internazionale Milano",
+        "score": {
+          "ft": [
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "round": "7^ Giornata",
+        "date": "2020-11-08",
+        "team1": "Genoa CFC",
+        "team2": "AS Roma",
+        "score": {
+          "ft": [
+            1,
+            3
+          ]
+        }
+      },
+      {
+        "round": "7^ Giornata",
+        "date": "2020-11-08",
+        "team1": "Torino FC",
+        "team2": "FC Crotone",
+        "score": {
+          "ft": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "round": "7^ Giornata",
+        "date": "2020-11-08",
+        "team1": "Bologna FC",
+        "team2": "SSC Napoli",
+        "score": {
+          "ft": [
+            0,
+            1
+          ]
+        }
+      },
+      {
+        "round": "7^ Giornata",
+        "date": "2020-11-08",
+        "team1": "AC Milan",
+        "team2": "Hellas Verona",
+        "score": {
+          "ft": [
+            2,
+            2
+          ]
+        }
+      }
+      
+    ]
+  }

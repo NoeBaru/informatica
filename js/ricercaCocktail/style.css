@@ -1,0 +1,21 @@
+.card-container {
+  display: flex; /* Utilizza flexbox per allineare le card affiancate */
+  flex-wrap: wrap; /* Consente al contenitore di avvolgere le card quando non ci sono abbastanza spazio */
+  gap: 20px; /* Aggiunge uno spazio tra le card */
+  max-width: 1200px; /* Limita la larghezza massima del contenitore */
+  margin: 0 auto; /* Centra il contenitore nella pagina */
+  align-content: center;
+}
+
+.card {
+  width: 300px; /* Imposta la larghezza della card su metà dello spazio disponibile, meno lo spazio tra le card */
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

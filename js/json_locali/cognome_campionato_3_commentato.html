@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Impostazioni di base del documento HTML -->
+    <meta charset="UTF-8"> <!-- Definisce la codifica dei caratteri come UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Imposta la viewport per la responsività -->
+    <title>cognome_Campionato_3</title> <!-- Titolo della pagina -->
+</head>
+<body>
+    <h1 id="title"></h1> <!-- Header per il titolo del campionato -->
+    <select name="squadra" id="selSquad"> <!-- Dropdown per la selezione della squadra -->
+        <option value=""></option> <!-- Opzione vuota iniziale -->
+    </select>
+    <div id="risp"></div> <!-- Div per mostrare i risultati delle partite -->
+
+    <script>
+        // Collegamenti agli elementi del DOM
+        let title = document.getElementById("title");
+        let selezione = document.getElementById("selSquad");
+        
+        // URL dei file JSON da cui recuperare i dati
+        let url = "./campionato20_21.json";
+        let url2 = "./squadre20_21.json";
+        
+        // Fetch per ottenere i dati delle squadre
+        fetch(url2)
+            .then(response => response.json()) // Converti la risposta in JSON
+            .then(dati => {
+                const datiJson = dati; // Salva i dati JSON
+                title.innerHTML = "CAMPIONATO: " + datiJson.name; // Imposta il titolo del campionato
+                datiJson.clubs.forEach(element => {
+                    // Aggiungi ogni squadra al dropdown
+                    selezione.innerHTML += "<option value='" + element.name + "'>" + element.name + "</option>";
+                });
+            });
+        
+        let risposta = document.getElementById("risp"); // Elemento dove mostrare i risultati delle partite
+        
+        // Aggiungi un event listener al dropdown per gestire la selezione della squadra
+        selezione.addEventListener('change', function(e) {
+            const selectedValue = event.target.value; // Ottieni il valore selezionato
+            // Fetch per ottenere i dati delle partite
+            fetch(url)
+                .then(response => response.json()) // Converti la risposta in JSON
+                .then(dati => {
+                    let goalFatti = 0;
+                    let goalSubiti = 0;
+                    let punti = 0;
+                    const datiJson = dati; // Salva i dati JSON
+                    risposta.innerHTML = ""; // Pulisci il div dei risultati
+                    datiJson.matches.forEach(element => {
+                        // Controlla se la squadra selezionata è il team1 o il team2 e aggiungi i dati della partita
+                        if (element.team1 == selectedValue) {
+                            risposta.innerHTML += "<div><h4>" + element.round + "</h4><p>" + element.team1 + " : " + element.score.ft[0] + "</p><p>" + element.team2 + " : " + element.score.ft[1] + "</p></div>";
+                            goalFatti += element.score.ft[0];
+                            goalSubiti += element.score.ft[1];
+                            if (element.score.ft[0] == element.score.ft[1])
+                                punti += 1;
+                            else if (element.score.ft[0] > element.score.ft[1])
+                                punti += 3;
+                        } else if (element.team2 == selectedValue) {
+                            risposta.innerHTML += "<div><h4>" + element.round + "</h4><p>" + element.team1 + " : " + element.score.ft[0] + "</p><p>" + element.team2 + " : " + element.score.ft[1] + "</p></div>";
+                            goalFatti += element.score.ft[1];
+                            goalSubiti += element.score.ft[0];
+                            if (element.score.ft[0] == element.score.ft[1])
+                                punti += 1;
+                            else if (element.score.ft[0] < element.score.ft[1])
+                                punti += 3;
+                        }
+                    });
+                    // Mostra i totali di goal fatti, subiti e punti
+                    risposta.innerHTML += "<br><p>Goal fatti: " + goalFatti + "</p>" + "<p>Goal subiti: " + goalSubiti + "</p>" + "<p>Punti: " + punti + "</p>";
+                });
+        });
+    </script>
+</body>
+</html>

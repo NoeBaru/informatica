@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cognome_Campionato_3</title>
+</head>
+<body>
+    <h1 id="title"></h1>
+    <select name="squadra" id="selSquad">
+        <option value=""></option>
+    </select>
+    <div id = "risp"></div>
+    <script>
+        let title = document.getElementById("title");
+        let selezione = document.getElementById("selSquad");
+        let url = "./campionato20_21.json"
+        let url2 = "./squadre20_21.json"
+        fetch(url2)
+            .then(response => response.json()) //richiamo la funzione json
+            .then(dati => {
+                const datiJson = dati
+                title.innerHTML = "CAMPIONATO: "+datiJson.name;
+                datiJson.clubs.forEach(element => {
+                    selezione.innerHTML += "<option value='"+element.name+"'>"+element.name+"</option>"
+                });
+            })
+        let risposta = document.getElementById("risp")
+        
+        
+
+        selezione.addEventListener('change', function(e){
+            const selectedValue = event.target.value; //salvo nell'event quello che schiaccio.
+            fetch(url)
+                .then(response => response.json()) //richiamo la funzione json
+                .then(dati => {
+                    let goalFatti = 0;
+                    let goalSubiti = 0;
+                    let punti = 0;
+                    const datiJson = dati
+                    risposta.innerHTML = ""
+                    datiJson.matches.forEach(element => {
+                        if(element.team1 == selectedValue ){
+                            risposta.innerHTML += "<div><h4>"+element.round+"</h4><p>"+element.team1 +" : "+ element.score.ft[0]+"</p><p>"+element.team2 +" : "+ element.score.ft[1]+"</p></div>"
+                            goalFatti += element.score.ft[0]
+                            goalSubiti += element.score.ft[1]
+                            if(element.score.ft[0]==element.score.ft[1])
+                                punti += 1;
+                            else if(element.score.ft[0]>element.score.ft[1])
+                                punti += 3
+                        }else if(element.team2 == selectedValue){
+                            risposta.innerHTML += "<div><h4>"+element.round+"</h4><p>"+element.team1 +" : "+ element.score.ft[0]+"</p><p>"+element.team2 +" : "+ element.score.ft[1]+"</p></div>"
+                            goalFatti += element.score.ft[1]
+                            goalSubiti += element.score.ft[0]
+                            if(element.score.ft[0]==element.score.ft[1])
+                                punti += 1;
+                            else if(element.score.ft[0]<element.score.ft[1])
+                                punti += 3
+                        }
+                    })
+                    risposta.innerHTML += "<br><p>Goal fatti: "+ goalFatti+"</p>" + "<p>Goal subiti: "+ goalSubiti+"</p>" + "<p>punti: "+ punti+"</p>"
+                })  
+        })
+    </script>
+</body>
+</html>
+</body>
+</html>

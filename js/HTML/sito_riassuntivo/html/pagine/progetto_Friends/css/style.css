@@ -1,0 +1,450 @@
+body{
+    padding: 2%;
+    padding-top: 15%;
+    background-color: rgb(0, 0, 0);
+    background: url("../img/banner/banner.jpg");
+    background-repeat: no-repeat;
+    margin-right: 14%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    height: 150vh;
+}
+
+.background-image{
+    margin-top: 30%;
+    background: url("../img/banner/banner1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 80.5vh;
+    padding: 0px;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+/* per cambiare il colore del link */
+article a:link, article a:visited{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+/* per cambiare il colore del link una volta che ci si passa sopra con il mouse */
+article a:hover{
+    color: rgb(188, 34, 244);
+}
+
+section{
+    text-align: center;
+    text-decoration: none;
+}
+
+/* per cambiare il colore del link */
+.form_newsletter a:link, article a:visited{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+/* per cambiare il colore del link una volta che ci si passa sopra con il mouse */
+.form_newsletter a:hover{
+    color: rgb(188, 34, 244);
+}
+
+/* per cambiare il colore del link */
+.notizia a:link, article a:visited{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+/* per cambiare il colore del link una volta che ci si passa sopra con il mouse */
+.notizia a:hover{
+    color: rgb(188, 34, 244);
+}
+
+/*Per bottoni*/
+.container{
+    color:rgb(255, 255, 255);
+    margin: 0 0 10;
+    text-decoration: none;
+}
+
+#button{
+    text-decoration: none;
+    background-color: #262626;
+    color:rgb(255, 255, 255);
+    padding: 10px;
+    width: 120px;
+    margin-left: 1300px;
+    margin-top: -48px;
+    display: block;/*per poter cliccare non solo sopra la scritta per cambiare pagina*/
+    float:top right;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 10px 0 0 rgb(188, 34, 244);
+}
+
+#button2{
+    text-decoration: none;
+    background-color: #262626;
+    color:rgb(255, 255, 255);
+    padding: 10px;
+    width: 100px;
+    margin-left: 1320px;
+    margin-top: 20px;
+    display: block;/*per poter cliccare non solo sopra la scritta per cambiare pagina*/
+    float:top right;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 10px 0 0 rgb(188, 34, 244);
+}
+
+#button3{
+    text-decoration: none;
+    background-color: #262626;
+    color:rgb(255, 255, 255);
+    padding: 10px;
+    width: 100px;
+    margin-left: 1320px;
+    margin-top: 20px;
+    display: block;/*per poter cliccare non solo sopra la scritta per cambiare pagina*/
+    float:none;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 10px 0 0 rgb(188, 34, 244);
+}
+
+#button4{
+    text-decoration: none;
+    background-color: #262626;
+    color:rgb(255, 255, 255);
+    padding: 10px;
+    width: 100px;
+    margin-left: 1320px;
+    margin-top: 20px;
+    display: block;/*per poter cliccare non solo sopra la scritta per cambiare pagina*/
+    float:none;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 10px 0 0 rgb(188, 34, 244);
+}
+
+#button:active{
+    transform: translateY(10px);
+    box-shadow: 0 0 0 0 rgb(188, 34, 244);;
+}
+
+#button2:active{
+    transform: translateY(10px);
+    box-shadow: 0 0 0 0 rgb(188, 34, 244);;
+}
+
+#button3:active{
+    transform: translateY(10px);
+    box-shadow: 0 0 0 0 rgb(188, 34, 244);;
+}
+
+#button4:active{
+    transform: translateY(10px);
+    box-shadow: 0 0 0 0 rgb(188, 34, 244);;
+}
+
+/*Per menu'*/
+.menu{
+    position: relative;
+}
+
+.ani-menu{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-1em);
+    z-index: -1;
+    transition: all 1.5s ease 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+}
+
+.ani-menu2{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-1em);
+    z-index: -1;
+    transition: all 1.5s ease 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    text-align: left;
+}
+
+.ani-menu3{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-1em);
+    z-index: -1;
+    transition: all 1.5s ease 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    text-align: left;
+}
+
+.ani-menu4{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-1em);
+    z-index: -1;
+    transition: all 1.5s ease 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    text-align: left;
+}
+
+.menu:focus .ani-menu,
+.menu:focus-within .ani-menu,
+.menu:hover .ani-menu{
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0);
+    transition-delay: 0s, 0s, 0.3s;
+}
+
+.menu:focus .ani-menu2,
+.menu:focus-within .ani-menu2,
+.menu:hover .ani-menu2{
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0);
+    transition-delay: 0s, 0s, 0.3s;
+}
+
+.menu:focus .ani-menu3,
+.menu:focus-within .ani-menu3,
+.menu:hover .ani-menu3{
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0);
+    transition-delay: 0s, 0s, 0.3s;
+}
+
+.menu:focus .ani-menu4,
+.menu:focus-within .ani-menu4,
+.menu:hover .ani-menu4{
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0);
+    transition-delay: 0s, 0s, 0.3s;
+}
+
+nav{
+    width: 100%;
+    margin-left: 0%;
+}
+
+nav a{
+    color: rgb(255, 255, 255); /*colore testo menu'*/
+    display: block; /*per poter cliccare non solo sopra la scritta per cambiare pagina*/
+    padding: 15px 25px;
+    text-decoration: none;
+    font-family: big john;
+}
+
+.ani-menu a{
+    width: 60%; /*larghezza riga colorata quando passi con mouse*/
+    padding: 15px 30px;
+    text-align: center;
+    font-family: roboto;
+}
+
+.ani-menu2 a{
+    width: 60%; /*larghezza riga colorata quando passi con mouse*/
+    padding: 15px 22px;
+    text-align: center;
+    font-family: roboto;
+}
+
+.ani-menu3 a{
+    width: 60%; /*larghezza riga colorata quando passi con mouse*/
+    padding: 15px 27px;
+    text-align: center;
+    font-family: roboto;
+}
+
+.ani-menu4 a{
+    width: 60%; /*larghezza riga colorata quando passi con mouse*/
+    padding: 15px 27px;
+    text-align: center;
+    font-family: roboto;
+}
+
+.ani-menu:hover{
+    background: #262626; /*colore menu'*/
+}
+
+.ani-menu2:hover{
+    background: #262626; /*colore menu'*/
+}
+
+.ani-menu3:hover{
+    background: #262626; /*colore menu'*/
+}
+
+.ani-menu4:hover{
+    background: #262626; /*colore menu'*/
+}
+
+nav a:hover{
+    background: rgb(188, 34, 244); /*colore menu' al passare del mouse*/
+}
+
+nav ul, nav ul li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav > ul{
+    background: #262626;
+    text-align: center;
+}
+
+nav > ul > li{
+    display: inline-block;
+    /*border-left: 1px solid #fff;*/
+}
+
+nav > ul > li:first-child{
+    border: none;
+}
+
+.ani-menu{
+    background: rgb(209, 82, 255);
+}
+
+.ani-menu2{
+    background: rgb(209, 82, 255);
+}
+
+.ani-menu3{
+    background: rgb(209, 82, 255);
+}
+
+.ani-menu4{
+    background: rgb(209, 82, 255);
+}
+
+/*titoli*/
+h1{
+    margin-top: -130px;
+    background-color: rgba(255, 255, 255, 0); /*colore sfondo*/
+    color : rgb(255, 255, 255); /*colore testo */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80px; 
+}
+
+h2{
+    background-color: rgba(255, 255, 255, 0); /*colore sfondo*/
+    color : rgb(255, 255, 255); /*colore testo */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80px; 
+}
+
+p2{
+    font-size: 30px;
+}
+
+/*per gli article*/
+.notizia{
+    margin-top: -5%;
+    background-color: rgba(0, 0, 0, 0.227); /*colore sfondo*/
+    color : rgb(255, 255, 255); /*colore testo */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+}
+
+.notizia2{
+    margin-top: -5%;
+    background-color: rgba(0, 0, 0, 0.227); /*colore sfondo*/
+    color : rgb(255, 255, 255); /*colore testo */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    text-align: left;
+}
+
+.form_newsletter{
+    margin-top: -5%;
+    background-color: rgba(0, 0, 0, 0.227); /*colore sfondo*/
+    color : rgb(255, 255, 255); /*colore testo */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+}
+
+/*per il footer*/
+footer{
+    text-decoration: none;
+    margin-top: 0%;
+    position: absolute; /* Imposta la posizione del footer come assoluta */
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Imposta la larghezza del footer al 100% */
+    height: 100px; /* Imposta l'altezza del footer a 100 pixel */    
+}
+
+#footer_title{
+    font: bold 140% Arial, sans-serif;
+    text-align: center;
+    color: white;
+    background-color: #262626;
+}
+
+/* per cambiare il colore del link */
+#footer_title a:link, #footer a:visited{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+/* per cambiare il colore del link una volta che ci si passa sopra con il mouse */
+#footer_title a:hover{
+    color: rgb(188, 34, 244);
+}
+
+#footer_title{
+    margin-top: 650px;
+    font: bold 140% Arial, sans-serif;
+    text-align: center;
+}

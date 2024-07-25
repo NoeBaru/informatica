@@ -1,0 +1,76 @@
+body{
+    background-image: url(../img/fiore.png);
+    background-repeat: no-repeat;
+}
+
+h2{
+    font: bold 114% Arial, sans-serif;
+    color: #006699;
+}
+
+#titolo{
+    height: 60px;
+    font: bold 200% Arial, sans-serif;
+    color: white;
+    background-color: #FF6600;
+}
+
+#titolo2{
+    height: 60px;
+    font: bold 150% Arial, sans-serif;
+    color: white;
+    background-color: #FF6600;
+}
+
+#navbar{
+    border: 1px solid #FF6600;
+    position: absolute;
+    width: 98.7%;
+    left: 8px;
+    top: 127px;
+    background-color: white;
+}
+
+#navbar li{
+    font-size: 110%;
+    display: inline;
+    padding: 10px;
+}
+
+#navbar a:link, #navbar a:visited{
+    color: navy;
+    text-decoration: none;
+}
+
+#navbar a:hover{
+    color: blue;
+}
+
+#contenuto{
+    color: black;
+    background-color: white;
+    margin-left: 25%;
+    margin-top: 75px;
+    margin-right: 20%;
+}
+
+.notizia{
+    font-size: 80%;
+}
+
+#footer{
+    height: 30px;
+    font: bold 114% Arial, sans-serif;
+    text-align: center;
+    color: white;
+    background-color: #FF6600;
+}
+
+#footer a:link, #footer a:visited{
+    color: white;
+    text-decoration: none;
+}
+
+#footer a:hover{
+    color: yellow;
+}

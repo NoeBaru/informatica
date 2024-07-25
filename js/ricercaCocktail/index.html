@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricerca cocktail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="start">
+        <input type="text" id="cocktail" name="cocktail"></label><br><br>
+        <button type="button" id="button">Cerca cocktail</button>
+    </div>
+    <div id="risultato">
+        <div id="informazioni" class="card-container">
+
+        </div>
+    </div>
+
+    <script>
+        /*********
+         utilizzo il webserver di VSC 
+         **********/
+        const cocktail = document.getElementById("cocktail")
+        let url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" //url che punta al json... può essere anche un url sul web
+        //let select_provincia = document.getElementById("select_provincia")
+        //console.log(url)
+        
+        const button = document.getElementById("button")
+        const start = document.getElementById("start")
+        const informazioni = document.getElementById("informazioni")
+
+        button.addEventListener("click", function (e) {
+            e.preventDefault()
+            let ricerca = url + cocktail.value
+            console.log(ricerca)
+            cancellaContenutoDiv()
+            fetch(ricerca)
+                .then(response => response.json()) //richiamo la funzione json
+                .then(dati => {
+                    const datiJson = dati
+                    console.log(datiJson) //stampo l'oggetto creato dall'importazione del json
+                    if (datiJson.drinks.length > 0){
+                    //console.log("regione nome = " + datiJson.regione_nome)
+                        datiJson.drinks.forEach(riga => {
+                                let informazioniDrink = document.createElement('div')
+                                informazioniDrink.innerHTML = `<div class=\'card\'>
+                                                                    <img src="${riga.strDrinkThumb}" alt="Avatar" style="width:300px">
+                                                                    <div class=\"card-container\">
+                                                                        <h4><b>${riga.strDrink}</b></h4>
+                                                                        <p>Drink</p>
+                                                                    </div>
+                                                                </div>`
+                                informazioni.appendChild(informazioniDrink)
+                        })
+                    }else{
+                        console.log("Vettore vuoto, ricerca non riuscita")
+                    }
+                    //console.log(contComuni + ", " + contAbitanti + ", " + maxAbitanti)
+
+
+                    /*datiJson.provincia.forEach(element =>{ //scorro l'array di oggetti presente in provincia
+                        console.log("--", element.provincia_nome)
+    
+                        if (element.comuni.length > 0){
+                            element.comuni.forEach(dati_comune =>{ //scorro l'array di oggetti presente in comuni
+                                console.log("---- " + dati_comune.comune_nome + " " + dati_comune.cap)
+    
+                                createOptionProvincia(element.provincia_nome + " " + dati_comune.comune_nome + " " + dati_comune.cap)
+                            })
+                                
+                        }
+    
+                    })*/
+                })
+
+            /*function createOptionProvincia(valore) {
+                select_provincia.insertAdjacentHTML('beforeend', '<option value="' + valore + '">' + valore + '</option>')
+            }
+
+            select_provincia.addEventListener("change", function (e) {
+                console.log(e.target.value) //stampa in console il valore selezionato
+
+
+            })*/
+
+
+
+
+
+
+
+            /*********************************
+            Sintassi per scorrere una lista di oggetti
+            Si usa Object.keys
+
+            Object.keys(datiJson.provincia).forEach(key => {
+                console.log(key)
+            })
+            *********************************/
+        })
+
+        //Cancello tutti gli elementi class="error"
+        function clearForClass(classe) {
+            let elem = document.getElementsByClassName(classe)
+        
+            while(elem.length>0){
+                elem[0].parentNode.removeChild(elem[0])
+            }
+        }
+        function clearForId(id, id_contenitore) {
+            let elem = document.getElementById(id)
+        
+            if (elem) {
+            // Rimuovi l'elemento dal DOM
+                elem.remove();
+                let nuovoElemento = document.createElement("div");
+                nuovoElemento.id = id;
+                let contenitore = document.getElementById(id_contenitore); // Sostituisci con l'ID del contenitore desiderato
+                contenitore.appendChild(nuovoElemento);
+            } else {
+                console.log("L'elemento non esiste.");
+            }
+        }
+        function rimuoviTutteLeCard() {
+            // Seleziona il contenitore delle card
+            let cardContainer = document.getElementById("informazioni"); // Sostituisci con l'ID effettivo del contenitore
+
+            // Controlla se il contenitore delle card esiste
+            if (cardContainer) {
+                // Ottieni un elenco di tutte le card all'interno del contenitore
+                let cards = cardContainer.getElementsByClassName("card");
+
+                // Continua a rimuovere le card finché ne esiste almeno una
+                while (cards.length > 0) {
+                    // Rimuovi la prima card dall'elenco
+                    //cardContainer.removeChild(cards[0]);
+                    cards.remove()
+                }
+            } else {
+                console.log("Il contenitore delle card non esiste.");
+            }
+        }
+        function cancellaContenutoDiv() {
+            // Seleziona l'elemento div
+            let divDaSvuotare = document.getElementById("informazioni"); // Sostituisci con l'ID effettivo del tuo div
+
+            // Controlla se l'elemento div esiste
+            if (divDaSvuotare) {
+                // Svuota il contenuto del div impostando innerHTML a una stringa vuota
+                divDaSvuotare.innerHTML = "";
+            } else {
+                console.log("Il div non esiste.");
+            }
+        }
+    </script>
+</body>
+
+</html>
